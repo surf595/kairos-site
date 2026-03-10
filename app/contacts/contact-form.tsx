@@ -7,8 +7,12 @@ type FormStatus =
   | { type: "success"; message: string }
   | { type: "error"; message: string };
 
+type ApiResponse = {
+  ok?: boolean;
+  error?: string;
+};
+
 export default function ContactForm() {
-  const formRef = useRef<HTMLFormElement | null>(null);
   const startedAtRef = useRef<number>(Date.now());
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,10 +39,15 @@ export default function ContactForm() {
         body: formData,
       });
 
-      const data = (await response.json()) as {
-        ok?: boolean;
-        error?: string;
-      };
+      const rawText = await response.text();
+
+      let data: ApiResponse = {};
+
+      try {
+        data = rawText ? (JSON.parse(rawText) as ApiResponse) : {};
+      } catch {
+        throw new Error("Сервер вернул некорректный ответ.");
+      }
 
       if (!response.ok) {
         throw new Error(data.error || "Не удалось отправить сообщение.");
@@ -66,7 +75,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="mt-6 space-y-5">
       <input
         type="text"
         name="company"
@@ -109,4 +118,44 @@ export default function ContactForm() {
           required
           maxLength={150}
           autoComplete="email"
-          className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4
+          className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="message" className="mb-1 block text-sm text-[#49504a]">
+          Сообщение
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows={6}
+          required
+          minLength={10}
+          maxLength={3000}
+          className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="rounded-xl bg-[#2f3331] px-6 py-3 text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {isSubmitting ? "Отправка..." : "Отправить сообщение"}
+      </button>
+
+      {status.type === "success" && (
+        <p className="text-sm leading-relaxed text-green-700">
+          {status.message}
+        </p>
+      )}
+
+      {status.type === "error" && (
+        <p className="text-sm leading-relaxed text-red-700">
+          {status.message}
+        </p>
+      )}
+    </form>
+  );
+}

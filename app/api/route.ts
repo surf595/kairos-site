@@ -10,12 +10,20 @@ type RateEntry = {
 
 const rateLimitStore = new Map<string, RateEntry>();
 
-const WINDOW_MS = 60 * 60 * 1000; // 1 час
+const WINDOW_MS = 60 * 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 5;
 const MIN_FORM_FILL_TIME_MS = 3000;
 
 function clean(value: FormDataEntryValue | null): string {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function normalizeText(value: string): string {
+  return value.replace(/\r\n/g, "\n").trim();
+}
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function escapeHtml(value: string): string {
@@ -55,26 +63,17 @@ function isRateLimited(ip: string): boolean {
   return existing.count > MAX_REQUESTS_PER_WINDOW;
 }
 
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function normalizeText(value: string): string {
-  return value.replace(/\r\n/g, "\n").trim();
+function json(data: unknown, status = 200) {
+  return NextResponse.json(data, {
+    status,
+    headers: {
+      "Cache-Control": "no-store",
+    },
+  });
 }
 
 export async function POST(req: NextRequest) {
   try {
-    const origin = req.headers.get("origin");
-    const requestOrigin = req.nextUrl.origin;
-
-    if (origin && origin !== requestOrigin) {
-      return NextResponse.json(
-        { error: "Недопустимый источник запроса." },
-        { status: 403 }
-      );
-    }
-
     const formData = await req.formData();
 
     const name = normalizeText(clean(formData.get("name")));
@@ -87,7 +86,7 @@ export async function POST(req: NextRequest) {
     const ip = getClientIp(req);
 
     if (company) {
-      return NextResponse.json({ ok: true });
+      return json({ ok: true });
     }
 
     if (
@@ -95,64 +94,62 @@ export async function POST(req: NextRequest) {
       formStartedAt > 0 &&
       Date.now() - formStartedAt < MIN_FORM_FILL_TIME_MS
     ) {
-      return NextResponse.json(
-        { error: "Форма отправлена слишком быстро." },
-        { status: 400 }
-      );
+      return json({ error: "Форма отправлена слишком быстро." }, 400);
     }
 
     if (isRateLimited(ip)) {
-      return NextResponse.json(
+      return json(
         { error: "Слишком много запросов. Попробуйте позже." },
-        { status: 429 }
+        429
       );
     }
 
     if (!name || name.length < 2 || name.length > 100) {
-      return NextResponse.json(
-        { error: "Некорректное имя." },
-        { status: 400 }
-      );
+      return json({ error: "Некорректное имя." }, 400);
     }
 
     if (!email || email.length > 150 || !isValidEmail(email)) {
-      return NextResponse.json(
-        { error: "Некорректный email." },
-        { status: 400 }
-      );
+      return json({ error: "Некорректный email." }, 400);
     }
 
     if (!message || message.length < 10 || message.length > 3000) {
-      return NextResponse.json(
+      return json(
         { error: "Сообщение должно содержать от 10 до 3000 символов." },
-        { status: 400 }
+        400
       );
     }
 
-    if (!process.env.SMTP_HOST) {
-      throw new Error("SMTP_HOST is missing");
+    const SMTP_HOST = process.env.SMTP_HOST;
+    const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
+    const SMTP_SECURE = process.env.SMTP_SECURE === "true";
+    const SMTP_USER = process.env.SMTP_USER;
+    const SMTP_PASS = process.env.SMTP_PASS;
+    const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER;
+
+    if (!SMTP_HOST) {
+      return json({ error: "Не задан SMTP_HOST в .env.local" }, 500);
     }
 
-    if (!process.env.SMTP_USER) {
-      throw new Error("SMTP_USER is missing");
+    if (!SMTP_USER) {
+      return json({ error: "Не задан SMTP_USER в .env.local" }, 500);
     }
 
-    if (!process.env.SMTP_PASS) {
-      throw new Error("SMTP_PASS is missing");
+    if (!SMTP_PASS) {
+      return json({ error: "Не задан SMTP_PASS в .env.local" }, 500);
     }
 
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT || 587),
-      secure: process.env.SMTP_SECURE === "true",
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_SECURE,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: SMTP_USER,
+        pass: SMTP_PASS,
       },
     });
 
     await transporter.sendMail({
-      from: `"Kairos Therapy" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      from: `"Kairos Therapy" <${SMTP_FROM}>`,
       to: "info@kairos.ee",
       replyTo: email,
       subject: `Новая заявка с сайта от ${name}`,
@@ -178,13 +175,13 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    return NextResponse.json({ ok: true });
+    return json({ ok: true });
   } catch (error) {
     console.error("CONTACT_FORM_ERROR:", error);
 
-    return NextResponse.json(
-      { error: "Не удалось отправить сообщение." },
-      { status: 500 }
-    );
+    const message =
+      error instanceof Error ? error.message : "Не удалось отправить сообщение.";
+
+    return json({ error: message }, 500);
   }
 }
