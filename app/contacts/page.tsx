@@ -7,130 +7,170 @@ export const metadata: Metadata = {
 
 export default function ContactsPage() {
   return (
-    <main className="mx-auto w-full max-w-4xl space-y-16 px-6 py-12 md:space-y-20 md:px-10 md:py-16">
+    <main className="mx-auto w-full max-w-6xl px-6 py-10 md:px-10 md:py-12">
+      <section className="mb-8 max-w-2xl">
+        <h1 className="text-4xl font-medium tracking-tight md:text-5xl">
+          Контакты
+        </h1>
 
-      <header className="space-y-6">
-        <h1 className="text-4xl font-medium md:text-5xl">Контакты</h1>
-
-        <p className="text-lg leading-relaxed text-[#49504a]">
-          Вы можете связаться со мной по телефону, электронной почте или
-          через форму обратной связи.  
-          Кратко опишите ваш вопрос или ситуацию, и я постараюсь ответить
-          в ближайшее время.
+        <p className="mt-4 text-lg leading-relaxed text-[#49504a]">
+          Вы можете написать через форму обратной связи или связаться со мной
+          напрямую. Приём осуществляется по предварительной записи.
         </p>
-      </header>
+      </section>
 
-      {/* Контактная информация */}
+      <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* Левая колонка — форма */}
+        <div className="rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-6 md:p-8">
+          <h2 className="text-2xl font-medium md:text-3xl">
+            Форма обратной связи
+          </h2>
 
-      <section className="space-y-6 text-lg text-[#49504a]">
-        <div>
-          <h2 className="text-2xl font-medium mb-2">Телефон</h2>
-          <a
-            href="tel:+3725093008"
-            className="hover:underline"
-          >
-            +372 509 3008
-          </a>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-medium mb-2">Email</h2>
-          <a
-            href="mailto:info@kairos.ee"
-            className="hover:underline"
-          >
-            info@kairos.ee
-          </a>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-medium mb-2">Адрес кабинета</h2>
-          <p>
-            Татари 56, кабинет 308<br />
-            Таллин, Эстония
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#737972]">
+            Вы можете кратко описать ваш вопрос или ситуацию. Я постараюсь
+            ответить в ближайшее время.
           </p>
-        </div>
-      </section>
 
-      {/* Карта */}
-
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">Как добраться</h2>
-
-        <div className="overflow-hidden rounded-2xl border border-[#2f3331]/15">
-          <iframe
-            src="https://www.google.com/maps?q=Tatari+56+Tallinn&output=embed"
-            width="100%"
-            height="400"
-            loading="lazy"
-          />
-        </div>
-      </section>
-
-      {/* Форма */}
-
-      <section className="space-y-6 rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-8">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Форма обратной связи
-        </h2>
-
-        <form
-          action="/api/contact"
-          method="POST"
-          className="space-y-6 max-w-xl"
-        >
-          <div>
-            <label className="block text-sm mb-1">
-              Имя
-            </label>
-            <input
-              name="name"
-              required
-              className="w-full rounded-lg border border-[#2f3331]/20 p-3"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm mb-1">
-              Email
-            </label>
-            <input
-              name="email"
-              type="email"
-              required
-              className="w-full rounded-lg border border-[#2f3331]/20 p-3"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm mb-1">
-              Сообщение
-            </label>
-            <textarea
-              name="message"
-              rows={5}
-              required
-              className="w-full rounded-lg border border-[#2f3331]/20 p-3"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="rounded-xl bg-[#2f3331] px-6 py-3 text-white hover:opacity-90"
+          <form
+            action="/api/contact"
+            method="POST"
+            className="mt-6 space-y-5"
           >
-            Отправить сообщение
-          </button>
-        </form>
+            {/* honeypot */}
+            <input
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+            />
+
+            {/* timestamp for time-trap */}
+            <input
+              type="hidden"
+              name="formStartedAt"
+              value={Date.now()}
+              readOnly
+            />
+
+            <div>
+              <label htmlFor="name" className="mb-1 block text-sm text-[#49504a]">
+                Имя
+              </label>
+              <input
+                id="name"
+                name="name"
+                required
+                maxLength={100}
+                className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="mb-1 block text-sm text-[#49504a]">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                maxLength={150}
+                className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="mb-1 block text-sm text-[#49504a]">
+                Сообщение
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
+                required
+                minLength={10}
+                maxLength={3000}
+                className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="rounded-xl bg-[#2f3331] px-6 py-3 text-white transition hover:opacity-90"
+            >
+              Отправить сообщение
+            </button>
+          </form>
+        </div>
+
+        {/* Правая колонка — контакты + карта */}
+        <div className="space-y-6">
+          <div className="rounded-3xl border border-[#2f3331]/15 bg-white p-6 md:p-8">
+            <h2 className="text-2xl font-medium md:text-3xl">Контактная информация</h2>
+
+            <div className="mt-6 space-y-5 text-[#49504a]">
+              <div>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Телефон</h3>
+                <a href="tel:+3725093008" className="hover:underline">
+                  +372 509 3008
+                </a>
+              </div>
+
+              <div>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Email</h3>
+                <a href="mailto:info@kairos.ee" className="hover:underline">
+                  info@kairos.ee
+                </a>
+              </div>
+
+              <div>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Адрес кабинета</h3>
+                <p>
+                  Татари 56, кабинет 308
+                  <br />
+                  Таллин, Эстония
+                </p>
+              </div>
+
+              <div>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Часы приёма</h3>
+                <p>
+                  Понедельник — 09:00–19:00
+                  <br />
+                  Вторник — 09:00–19:00
+                  <br />
+                  Среда — 09:00–14:00
+                  <br />
+                  Четверг — 09:00–19:00
+                  <br />
+                  Пятница — 09:00–19:00
+                  <br />
+                  Суббота — 09:00–15:00
+                  <br />
+                  Воскресенье — выходной
+                </p>
+              </div>
+
+              <div className="pt-2 text-sm text-[#737972]">
+                <p>Kairos Therapy OÜ</p>
+                <p>Reg. nr. 17338080</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-[#2f3331]/15 bg-white">
+            <iframe
+              title="Карта Kairos Therapy"
+              src="https://www.google.com/maps?q=Tatari+56+Tallinn&output=embed"
+              width="100%"
+              height="360"
+              loading="lazy"
+              className="block"
+            />
+          </div>
+        </div>
       </section>
-
-      {/* Реквизиты */}
-
-      <section className="space-y-3 text-sm text-[#737972]">
-        <p>Kairos Therapy OÜ</p>
-        <p>Reg. nr. 17338080</p>
-        <p>Таллин, Эстония</p>
-      </section>
-
     </main>
   );
 }
