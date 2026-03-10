@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Контакты — Kairos Therapy",
@@ -7,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function ContactsPage() {
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 py-10 md:px-10 md:py-12">
-      <section className="mb-8 max-w-2xl">
+    <main className="mx-auto w-full max-w-6xl px-6 py-8 md:px-10 md:py-10">
+      <section className="mb-6 max-w-2xl">
         <h1 className="text-4xl font-medium tracking-tight md:text-5xl">
           Контакты
         </h1>
@@ -19,8 +20,7 @@ export default function ContactsPage() {
         </p>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        {/* Левая колонка — форма */}
+      <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
         <div className="rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-6 md:p-8">
           <h2 className="text-2xl font-medium md:text-3xl">
             Форма обратной связи
@@ -31,101 +31,38 @@ export default function ContactsPage() {
             ответить в ближайшее время.
           </p>
 
-          <form
-            action="/api/contact"
-            method="POST"
-            className="mt-6 space-y-5"
-          >
-            {/* honeypot */}
-            <input
-              type="text"
-              name="company"
-              tabIndex={-1}
-              autoComplete="off"
-              className="hidden"
-            />
-
-            {/* timestamp for time-trap */}
-            <input
-              type="hidden"
-              name="formStartedAt"
-              value={Date.now()}
-              readOnly
-            />
-
-            <div>
-              <label htmlFor="name" className="mb-1 block text-sm text-[#49504a]">
-                Имя
-              </label>
-              <input
-                id="name"
-                name="name"
-                required
-                maxLength={100}
-                className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="mb-1 block text-sm text-[#49504a]">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                maxLength={150}
-                className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="mb-1 block text-sm text-[#49504a]">
-                Сообщение
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={6}
-                required
-                minLength={10}
-                maxLength={3000}
-                className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="rounded-xl bg-[#2f3331] px-6 py-3 text-white transition hover:opacity-90"
-            >
-              Отправить сообщение
-            </button>
-          </form>
+          <ContactForm />
         </div>
 
-        {/* Правая колонка — контакты + карта */}
         <div className="space-y-6">
           <div className="rounded-3xl border border-[#2f3331]/15 bg-white p-6 md:p-8">
-            <h2 className="text-2xl font-medium md:text-3xl">Контактная информация</h2>
+            <h2 className="text-2xl font-medium md:text-3xl">
+              Контактная информация
+            </h2>
 
             <div className="mt-6 space-y-5 text-[#49504a]">
               <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Телефон</h3>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
+                  Телефон
+                </h3>
                 <a href="tel:+3725093008" className="hover:underline">
                   +372 509 3008
                 </a>
               </div>
 
               <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Email</h3>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
+                  Email
+                </h3>
                 <a href="mailto:info@kairos.ee" className="hover:underline">
                   info@kairos.ee
                 </a>
               </div>
 
               <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Адрес кабинета</h3>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
+                  Адрес кабинета
+                </h3>
                 <p>
                   Татари 56, кабинет 308
                   <br />
@@ -134,7 +71,9 @@ export default function ContactsPage() {
               </div>
 
               <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">Часы приёма</h3>
+                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
+                  Часы приёма
+                </h3>
                 <p>
                   Понедельник — 09:00–19:00
                   <br />
@@ -164,7 +103,7 @@ export default function ContactsPage() {
               title="Карта Kairos Therapy"
               src="https://www.google.com/maps?q=Tatari+56+Tallinn&output=embed"
               width="100%"
-              height="360"
+              height="320"
               loading="lazy"
               className="block"
             />
