@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Обо мне — Kairos",
@@ -7,28 +8,45 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto w-full max-w-4xl space-y-16 px-6 py-12 md:space-y-20 md:px-10 md:py-16">
-      <header className="space-y-6">
-        <h1 className="text-4xl font-medium md:text-5xl">Обо мне</h1>
-        <div className="space-y-5 text-lg leading-relaxed text-[#49504a]">
-          <p>
-            Я веду частную психотерапевтическую практику в Таллине. В центре
-            моей работы — внимательное и бережное исследование внутреннего
-            опыта человека: его переживаний, отношений и жизненных ситуаций.
-          </p>
-          <p>
-            Часто то, что вызывает тревогу, внутреннее напряжение или трудности
-            в жизни, оказывается связано не только с текущими обстоятельствами,
-            но и с более глубокими внутренними процессами — переживаниями,
-            конфликтами и повторяющимися жизненными сценариями.
-          </p>
-          <p>
-            Психотерапия создаёт пространство, где становится возможным
-            остановиться, прислушаться к себе и постепенно лучше понять эти
-            процессы.
-          </p>
-        </div>
-      </header>
+<main className="mx-auto w-full max-w-6xl space-y-16 px-6 py-12 md:space-y-20 md:px-10 md:py-16 lg:px-12">     <header className="grid items-start gap-12 md:grid-cols-[1.2fr_0.8fr]">
+  
+  <div className="space-y-6">
+    <h1 className="text-4xl font-medium md:text-5xl">Обо мне</h1>
+
+    <div className="space-y-5 text-lg leading-relaxed text-[#49504a]">
+      <p>
+        Я веду частную психотерапевтическую практику в Таллине. В центре
+        моей работы — внимательное и бережное исследование внутреннего
+        опыта человека: его переживаний, отношений и жизненных ситуаций.
+      </p>
+
+      <p>
+        Часто то, что вызывает тревогу, внутреннее напряжение или трудности
+        в жизни, оказывается связано не только с текущими обстоятельствами,
+        но и с более глубокими внутренними процессами — переживаниями,
+        конфликтами и повторяющимися жизненными сценариями.
+      </p>
+
+      <p>
+        Психотерапия создаёт пространство, где становится возможным
+        остановиться, прислушаться к себе и постепенно лучше понять эти
+        процессы.
+      </p>
+    </div>
+  </div>
+
+  <div className="w-full max-w-[420px] justify-self-end overflow-hidden rounded-2xl border border-[#2f3331]/15 shadow-sm">
+    <Image
+      src="/images/viktor.jpeg"
+      alt="Виктор — психолог и психотерапевт"
+      width={500}
+      height={620}
+      className="h-auto w-full object-cover"
+      priority
+    />
+  </div>
+
+</header>
 
       <section className="space-y-5">
         <h2 className="text-2xl font-medium md:text-3xl">

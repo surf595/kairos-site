@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const themes = [
   "Тревога и внутреннее напряжение",
@@ -26,7 +27,7 @@ export default function HomePage() {
         <div className="relative mx-auto grid min-h-[calc(100vh-76px)] max-w-7xl items-center gap-14 px-6 py-16 md:px-10 lg:grid-cols-[1.08fr_0.92fr] lg:px-12 lg:py-24">
           <div className="max-w-3xl fade-in-up">
             <p className="mb-6 text-xs uppercase tracking-[0.34em] text-[#7A7268]">
-              Kairos • частная практика
+              Kairos Therapy OÜ• частная практика
             </p>
 
             <h1 className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#171614] sm:text-6xl lg:text-7xl">
@@ -100,12 +101,35 @@ export default function HomePage() {
                       <div className="orbit-glow" />
                     </div>
 
-                    <div className="relative z-10 flex items-start justify-between">
-                      <span className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
-                        кабинет
-                      </span>
-                      <span className="text-sm text-[#8A7E70]">Таллин</span>
-                    </div>
+                    <div className="relative flex h-full items-center justify-center">
+<div className="flex h-full items-center justify-center">
+  <svg
+    viewBox="0 0 300 300"
+    className="w-[260px]"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="150" cy="150" r="110" stroke="#CFC5B7" strokeWidth="1" fill="none"/>
+    <circle cx="150" cy="150" r="80" stroke="#DAD1C5" strokeWidth="1" fill="none"/>
+    <circle cx="150" cy="150" r="50" stroke="#E6DED3" strokeWidth="1" fill="none"/>
+
+    <path
+      d="M40 150 Q150 40 260 150"
+      stroke="#CBBEAD"
+      strokeWidth="1"
+      fill="none"
+    />
+
+    <path
+      d="M60 200 Q150 90 240 200"
+      stroke="#D6CCBF"
+      strokeWidth="1"
+      fill="none"
+    />
+
+    <circle cx="150" cy="150" r="6" fill="#9C7C5D"/>
+  </svg>
+</div>
+</div>
 
                     <div className="relative z-10 mt-auto max-w-[300px]">
                       <p className="text-sm leading-8 text-[#6B6259]">
@@ -174,7 +198,53 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+<section className="border-y border-black/10 bg-[#F6F1EA]">
+  <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
 
+    <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+
+      <div>
+        <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
+          Пространство
+        </p>
+
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+          Кабинет в Таллине
+        </h2>
+
+        <p className="mt-6 max-w-xl text-lg leading-8 text-[#5A534A]">
+          Очная работа проходит в спокойном пространстве, где можно говорить без
+          спешки и внешнего давления. В терапии важна не только беседа, но и
+          сама рамка встречи — место, время и устойчивость пространства.
+        </p>
+
+        <p className="mt-4 max-w-xl text-lg leading-8 text-[#5A534A]">
+          Иногда именно возможность просто быть услышанным в таком месте уже
+          становится началом внутреннего движения.
+        </p>
+
+      </div>
+
+      <div className="overflow-hidden rounded-[34px] border border-[#D8CCBE] bg-[#F8F4EE] shadow-[0_24px_60px_rgba(92,72,46,0.08)]">
+        <div className="relative aspect-[4/5]">
+
+          <Image
+            src="/images/cabin/cabin.jpeg"
+            alt="Кабинет психотерапии Kairos Therapy в Таллине"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
       <section className="border-y border-black/10 bg-[#EFE7DC]">
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
