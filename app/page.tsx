@@ -1,167 +1,298 @@
-export default function Home() {
-  const focusAreas = [
-    "Тревога и внутреннее напряжение",
-    "Трудности в отношениях",
-    "Повторяющиеся жизненные сценарии",
-    "Кризисы и жизненные переходы",
-    "Чувство пустоты и утраты смысла",
-    "Стыд, вина, самооценка",
-  ];
+import Link from "next/link";
 
-  const faqItems = [
-    {
-      question: "С чем можно приходить?",
-      answer:
-        "С любыми внутренними затруднениями: тревогой, конфликтами в отношениях, усталостью, переживанием утраты, ощущением тупика или повторяющихся ситуаций.",
-    },
-    {
-      question: "Нужно ли уметь формулировать запрос?",
-      answer:
-        "Нет. Запрос может проясняться постепенно в процессе совместной работы — в вашем темпе и с опорой на то, что сейчас действительно важно.",
-    },
-    {
-      question: "Можно ли работать онлайн?",
-      answer:
-        "Да. Онлайн-формат подходит для регулярной психотерапии и может быть устойчивой формой долгосрочной работы.",
-    },
-    {
-      question: "Сколько длится встреча?",
-      answer: "Стандартная длительность индивидуальной сессии — 50 минут.",
-    },
-    {
-      question: "Как записаться на первую консультацию?",
-      answer:
-        "Напишите в Telegram или на email. Я отвечу и предложу ближайшие возможные окна для первой встречи.",
-    },
-  ];
+const themes = [
+  "Тревога и внутреннее напряжение",
+  "Сложности в отношениях",
+  "Повторяющиеся жизненные сценарии",
+  "Кризисы, утраты, чувство тупика",
+  "Проблемы с границами и самооценкой",
+  "Ощущение, что с вами «что-то не так»",
+];
 
+const features = [
+  { title: "Индивидуальная практика", value: "Для взрослых" },
+  { title: "Формат встречи", value: "Очно и онлайн" },
+  { title: "Длительность", value: "50 минут" },
+  { title: "Язык работы", value: "Русский" },
+];
+
+export default function HomePage() {
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-12 md:gap-24 md:px-10 md:py-20">
-      <header className="relative overflow-hidden rounded-[2.25rem] border border-[#6d6b64]/20 bg-gradient-to-br from-[#f8f4ed] via-[#f3efe7] to-[#ece8e1] p-8 md:p-14">
-        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#7f8572]/25 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 right-1/4 h-72 w-72 rounded-full bg-[#6f3f56]/20 blur-3xl" />
-        <div className="pointer-events-none absolute left-1/3 top-1/3 h-64 w-64 rounded-full border border-[#2f3331]/10" />
-        <div className="relative grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-          <div className="space-y-6">
-            <p className="text-sm tracking-[0.16em] text-[#5c615b] uppercase">Kairos • Частная практика</p>
-            <h1 className="max-w-2xl text-4xl leading-tight font-medium text-[#252a27] md:text-6xl">
+    <main className="bg-[#F3EEE6] text-[#26231F]">
+      <section className="relative overflow-hidden border-b border-black/10">
+        <div className="hero-light absolute inset-0" />
+        <div className="hero-noise absolute inset-0" />
+
+        <div className="relative mx-auto grid min-h-[calc(100vh-76px)] max-w-7xl items-center gap-14 px-6 py-16 md:px-10 lg:grid-cols-[1.08fr_0.92fr] lg:px-12 lg:py-24">
+          <div className="max-w-3xl fade-in-up">
+            <p className="mb-6 text-xs uppercase tracking-[0.34em] text-[#7A7268]">
+              Kairos • частная практика
+            </p>
+
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#171614] sm:text-6xl lg:text-7xl">
               Психотерапия как пространство для понимания себя
             </h1>
-            <p className="max-w-xl text-lg leading-relaxed text-[#4b514c] md:text-xl">
-              Частная практика в Таллине, очно и онлайн.
+
+            <div className="mt-8 h-px w-24 bg-[#B7AA96]" />
+
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-[#575148] sm:text-xl">
+              Частная практика в Таллине для взрослых. Очная и онлайн работа, в
+              которой можно не торопиться, постепенно распутывая внутренние
+              конфликты, повторяющиеся сценарии, напряжение в отношениях и
+              жизненные кризисы.
             </p>
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-              <a
+
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[#6C645A]">
+              Здесь важны не только симптомы и внешние события, но и то, как
+              устроен ваш внутренний мир: переживания, бессознательные
+              конфликты, способы защищаться, страх близости, вина, стыд и
+              одиночество.
+            </p>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Link
                 href="/contacts"
-                className="rounded-full border border-[#2f3331]/80 bg-[#2f3331] px-6 py-3 text-center text-sm font-medium text-[#f6f2ea] transition hover:bg-[#252927]"
+                className="inline-flex h-14 items-center justify-center rounded-full bg-[#171614] px-8 text-base font-medium text-[#F8F4EE] transition duration-300 hover:-translate-y-0.5 hover:bg-[#26231F] hover:shadow-[0_16px_40px_rgba(23,22,20,0.18)]"
               >
-                Записаться
-              </a>
-              <a
+                Записаться на консультацию
+              </Link>
+
+              <Link
                 href="/format"
-                className="rounded-full border border-[#2f3331]/25 px-6 py-3 text-center text-sm font-medium text-[#2f3331] transition hover:border-[#2f3331]/45"
+                className="inline-flex h-14 items-center justify-center rounded-full border border-[#CBBEAD] bg-[#F7F2EB]/80 px-8 text-base font-medium text-[#26231F] transition duration-300 hover:-translate-y-0.5 hover:border-[#B6A68F] hover:bg-[#FBF8F3] hover:shadow-[0_12px_30px_rgba(92,72,46,0.08)]"
               >
                 О формате работы
-              </a>
+              </Link>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              {[
+                "Индивидуальная практика",
+                "50 минут",
+                "Очно в Таллине",
+                "Онлайн",
+                "Русский язык",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-[#D7CCBE] bg-[#F7F2EC]/80 px-4 py-2 text-sm text-[#5F584F] shadow-[0_8px_20px_rgba(92,72,46,0.04)]"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
-          <div className="relative mx-auto h-64 w-full max-w-md md:h-80">
-            <div className="absolute inset-0 rounded-[2rem] border border-[#2f3331]/10 bg-gradient-to-tr from-[#7f8572]/25 via-transparent to-[#6f3f56]/20" />
-            <div className="absolute left-10 top-10 h-40 w-40 rounded-full border border-[#2f3331]/15 bg-[#f8f4ed]/70" />
-            <div className="absolute bottom-8 right-8 h-32 w-32 rounded-full bg-[#6f3f56]/20 blur-md" />
-            <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7f8572]/25 blur-lg" />
+
+          <div className="relative fade-in-up [animation-delay:160ms]">
+            <div className="relative mx-auto max-w-[560px]">
+              <div className="absolute -left-10 top-10 hidden h-40 w-40 rounded-full bg-[#E8DED0] blur-3xl md:block" />
+              <div className="absolute -right-6 bottom-8 hidden h-52 w-52 rounded-full bg-[#D8C7AF]/70 blur-3xl md:block" />
+
+              <div className="glass-panel relative overflow-hidden rounded-[38px] border border-[#D9CEC0] p-6 sm:p-8">
+                <div className="rounded-[30px] border border-[#DED4C8] bg-[linear-gradient(180deg,#F6F1EA_0%,#EFE7DC_100%)] p-6 sm:p-8">
+                  <div className="relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[24px] border border-[#E2D8CC] bg-[linear-gradient(160deg,rgba(255,255,255,0.62),rgba(238,229,217,0.72))] p-6 sm:p-7">
+                    <div className="hero-ambient-light absolute inset-0" />
+
+                    <div className="hero-orbit-system absolute inset-x-0 top-[72px] z-0 flex justify-center">
+                      <div className="orbit orbit-outer" />
+                      <div className="orbit orbit-middle" />
+                      <div className="orbit-core" />
+                      <div className="orbit-glow" />
+                    </div>
+
+                    <div className="relative z-10 flex items-start justify-between">
+                      <span className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
+                        кабинет
+                      </span>
+                      <span className="text-sm text-[#8A7E70]">Таллин</span>
+                    </div>
+
+                    <div className="relative z-10 mt-auto max-w-[300px]">
+                      <p className="text-sm leading-8 text-[#6B6259]">
+                        Спокойное пространство, в котором можно выдерживать
+                        сложные чувства, замечать скрытые связи и постепенно
+                        находить собственный язык для понимания себя.
+                      </p>
+                      <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-[#C8B79F] to-transparent" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <div className="soft-card rounded-[24px] border border-[#D9CEC0] bg-[#F7F2EB]/80 p-5">
+                  <div className="text-xs uppercase tracking-[0.22em] text-[#8A7E70]">
+                    подход
+                  </div>
+                  <div className="mt-3 text-base leading-7 text-[#3B3834]">
+                    Психодинамическая и аналитически ориентированная работа
+                  </div>
+                </div>
+
+                <div className="soft-card rounded-[24px] border border-[#D9CEC0] bg-[#F7F2EB]/80 p-5">
+                  <div className="text-xs uppercase tracking-[0.22em] text-[#8A7E70]">
+                    пространство
+                  </div>
+                  <div className="mt-3 text-base leading-7 text-[#3B3834]">
+                    Тёплая, спокойная атмосфера без спешки и давления
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </header>
-
-      <section className="max-w-3xl space-y-4">
-        <h2 className="text-3xl leading-tight font-medium md:text-4xl">Коротко о практике</h2>
-        <p className="text-lg leading-relaxed text-[#49504a]">
-          В центре работы — бережное и внимательное исследование внутреннего опыта: повторяющихся сценариев,
-          отношений с собой и другими, скрытых конфликтов и чувств, которым часто не хватает места в
-          повседневности.
-        </p>
       </section>
 
-      <section className="space-y-8" aria-labelledby="focus-areas-title">
-        <h2 id="focus-areas-title" className="text-3xl leading-tight font-medium md:text-4xl">
-          С чем я работаю
-        </h2>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {focusAreas.map((item) => (
-            <article
-              key={item}
-              className="rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/70 p-6 text-lg leading-snug text-[#303632]"
-            >
-              {item}
-            </article>
-          ))}
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <div>
+            <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
+              О практике
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+              Не быстрые советы, а пространство для внутренней работы
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-lg leading-8 text-[#5A534A]">
+            <p>
+              Иногда человек приходит не с ясным запросом, а с ощущением
+              внутренней спутанности: тревога, истощение, повторяющиеся
+              конфликты, напряжение в отношениях, чувство одиночества,
+              невозможность опереться на себя.
+            </p>
+            <p>
+              В терапии мы не только обсуждаем происходящее, но и пытаемся
+              понять, как устроен ваш способ переживать, защищаться, вступать в
+              отношения, выдерживать близость, злость, вину, стыд и зависимость.
+            </p>
+            <p>
+              Такая работа требует времени, внимания и безопасной рамки. Именно
+              поэтому для меня важны и содержание сессии, и само пространство, в
+              котором эта встреча происходит.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section
-        id="format"
-        className="space-y-8 rounded-[2rem] border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-8 md:p-10"
-      >
-        <h2 className="text-3xl leading-tight font-medium md:text-4xl">Формат работы</h2>
-        <ul className="grid gap-4 text-lg text-[#424942] md:grid-cols-2">
-          <li className="rounded-2xl border border-[#2f3331]/10 bg-[#f6f2ea] p-5">Индивидуальная психотерапия</li>
-          <li className="rounded-2xl border border-[#2f3331]/10 bg-[#f6f2ea] p-5">Очно в Таллине</li>
-          <li className="rounded-2xl border border-[#2f3331]/10 bg-[#f6f2ea] p-5">Онлайн</li>
-          <li className="rounded-2xl border border-[#2f3331]/10 bg-[#f6f2ea] p-5">Регулярные встречи и устойчивая рамка</li>
-        </ul>
-      </section>
-
-      <section className="max-w-3xl space-y-4">
-        <h2 className="text-3xl leading-tight font-medium md:text-4xl">Кабинет / пространство</h2>
-        <p className="text-lg leading-relaxed text-[#49504a]">
-          Приватный кабинет в Таллине — спокойное, защищённое пространство, где можно останавливаться,
-          прислушиваться к себе и постепенно выстраивать более ясное понимание своего внутреннего мира.
-        </p>
-      </section>
-
-      <section className="space-y-5 rounded-[2rem] border border-[#2f3331]/15 bg-gradient-to-r from-[#f8f4ed] to-[#f1ece4] p-8 md:p-10">
-        <h2 className="text-3xl leading-tight font-medium md:text-4xl">Стоимость</h2>
-        <p className="text-lg text-[#424942]">Индивидуальная сессия — по договоренности.</p>
-        <p className="text-lg text-[#424942]">Длительность — 50 минут.</p>
-      </section>
-
-      <section className="space-y-8" aria-labelledby="faq-title">
-        <h2 id="faq-title" className="text-3xl leading-tight font-medium md:text-4xl">
-          FAQ
-        </h2>
-        <div className="space-y-4">
-          {faqItems.map((item) => (
-            <details
-              key={item.question}
-              className="group rounded-2xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-5 open:bg-[#f8f4ed]"
+      <section className="border-y border-black/10 bg-[#EFE7DC]">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
+                С чем я работаю
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+                Темы, с которыми чаще всего приходят в терапию
+              </h2>
+            </div>
+            <Link
+              href="/services"
+              className="text-sm text-[#6B6259] underline decoration-[#B7AA96] underline-offset-4"
             >
-              <summary className="cursor-pointer list-none pr-8 text-lg font-medium text-[#2f3331]">{item.question}</summary>
-              <p className="pt-3 text-base leading-relaxed text-[#49504a]">{item.answer}</p>
-            </details>
-          ))}
+              Подробнее о направлениях работы
+            </Link>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {themes.map((theme) => (
+              <div
+                key={theme}
+                className="soft-card rounded-[28px] border border-[#D8CCBE] bg-[#F7F2EB]/85 p-6"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-[#9C7C5D]" />
+                  <p className="text-base leading-7 text-[#3C3935]">{theme}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="rounded-[2rem] border border-[#2f3331]/15 bg-[#2f3331] p-8 text-[#f6f2ea] md:p-12">
-        <div className="max-w-3xl space-y-5">
-          <h2 className="text-3xl leading-tight font-medium md:text-4xl">
-            Если вы чувствуете, что время пришло — можно начать с первого шага.
-          </h2>
-          <p className="text-lg text-[#ece7de]">Для записи на первичную консультацию выберите удобный способ связи.</p>
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-            <a
-              href="mailto:hello@kairos.ee"
-              className="rounded-full border border-[#f6f2ea]/60 px-6 py-3 text-center text-sm font-medium transition hover:bg-[#f6f2ea] hover:text-[#2f3331]"
-            >
-              Email
-            </a>
-            <a
-              href="tel:+3725093008"
-              className="rounded-full border border-[#f6f2ea]/60 px-6 py-3 text-center text-sm font-medium transition hover:bg-[#f6f2ea] hover:text-[#2f3331]"
-            >
-              Телефон
-            </a>
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
+              Формат работы
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+              Рамка, которая помогает выдерживать и понимать процесс
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[#5A534A]">
+              Сеттинг — это не формальность, а часть терапевтической работы.
+              Постоянство времени, места и рамки помогает постепенно создавать
+              пространство, в котором может возникать доверие и осмысление.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {features.map((item) => (
+              <div
+                key={item.title}
+                className="soft-card rounded-[28px] border border-[#D9CEC0] bg-[#F8F4EE] p-6"
+              >
+                <div className="text-sm uppercase tracking-[0.18em] text-[#8A7E70]">
+                  {item.title}
+                </div>
+                <div className="mt-3 text-xl font-medium text-[#24211E]">
+                  {item.value}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-black/10 bg-[#EDE4D7]">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+          <div className="glass-panel overflow-hidden rounded-[36px] border border-[#D4C7B7] p-8 md:p-12">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div>
+                <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
+                  Первая встреча
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+                  Можно прийти и без “правильного запроса”
+                </h2>
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#5A534A]">
+                  Нередко человек приходит с ощущением, что ему трудно
+                  объяснить, что именно происходит. Это нормально. Первая встреча
+                  нужна не для того, чтобы сразу всё сформулировать идеально, а
+                  чтобы начать совместно разбираться в происходящем.
+                </p>
+
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href="/faq"
+                    className="inline-flex h-14 items-center justify-center rounded-full border border-[#CBBEAD] bg-[#FAF6F0] px-8 text-base font-medium text-[#26231F] transition hover:-translate-y-0.5 hover:border-[#B6A68F]"
+                  >
+                    Читать FAQ
+                  </Link>
+                  <Link
+                    href="/contacts"
+                    className="inline-flex h-14 items-center justify-center rounded-full bg-[#171614] px-8 text-base font-medium text-[#F8F4EE] transition hover:-translate-y-0.5 hover:bg-[#26231F]"
+                  >
+                    Связаться со мной
+                  </Link>
+                </div>
+              </div>
+
+              <div className="rounded-[30px] border border-[#DACDBE] bg-[#F6F1EA]/90 p-6 shadow-[0_24px_60px_rgba(92,72,46,0.08)]">
+                <div className="rounded-[24px] border border-[#E1D6C9] bg-[#FBF8F3] p-6">
+                  <p className="text-sm leading-8 text-[#5D554B]">
+                    «Иногда внешне всё как будто в порядке, но внутри остаётся
+                    чувство, что жить становится всё труднее. В терапии важно не
+                    только облегчение симптома, но и понимание того, как
+                    складывается ваша внутренняя жизнь».
+                  </p>
+                  <div className="mt-6 h-px w-full bg-[#E2D8CC]" />
+                  <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[#8A7E70]">
+                    Kairos Therapy
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
