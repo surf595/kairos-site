@@ -95,11 +95,16 @@ export default function HomePage() {
                     <div className="hero-ambient-light absolute inset-0" />
 
                     <div className="hero-orbit-system absolute inset-x-0 top-[72px] z-0 flex justify-center">
-                      <div className="orbit orbit-outer" />
-                      <div className="orbit orbit-middle" />
-                      <div className="orbit-core" />
-                      <div className="orbit-glow" />
-                    </div>
+  <div className="orbit orbit-outer orbit-parallax-slow" />
+  <div className="orbit orbit-middle orbit-parallax-fast" />
+  <div className="orbit orbit-inner orbit-parallax-mid" />
+  <div className="orbit-path orbit-path-one" />
+  <div className="orbit-path orbit-path-two" />
+  <div className="orbit-core" />
+  <div className="orbit-glow" />
+  <div className="orbit-dust orbit-dust-one" />
+  <div className="orbit-dust orbit-dust-two" />
+</div>
 
                     <div className="relative flex h-full items-center justify-center">
 <div className="flex h-full items-center justify-center">

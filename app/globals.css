@@ -303,6 +303,355 @@ a {
   height: 460px;
   animation-delay: 1.8s;
 }
+/* =========================================
+   PREMIUM ORBIT SYSTEM
+   slow motion + subtle parallax + line depth
+   ========================================= */
+
+.orbit-inner {
+  width: 138px;
+  height: 138px;
+  top: 74px;
+  border: 1px solid rgba(229, 217, 201, 0.78);
+  opacity: 0.92;
+  animation: orbitRotateMicro 34s linear infinite;
+}
+
+.orbit-path {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 300px;
+  height: 300px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.orbit-path::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+}
+
+.orbit-path-one::before {
+  border-top: 1px solid rgba(208, 192, 170, 0.72);
+  border-left: 1px solid rgba(208, 192, 170, 0.28);
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transform: rotate(16deg) scaleX(0.88) scaleY(1.08);
+  filter: blur(0.1px);
+  opacity: 0.9;
+  animation: orbitTiltOne 18s ease-in-out infinite;
+}
+
+.orbit-path-two::before {
+  border-bottom: 1px solid rgba(219, 207, 189, 0.68);
+  border-right: 1px solid rgba(219, 207, 189, 0.25);
+  border-left: 1px solid transparent;
+  border-top: 1px solid transparent;
+  transform: rotate(-22deg) scaleX(1.04) scaleY(0.9);
+  opacity: 0.82;
+  animation: orbitTiltTwo 22s ease-in-out infinite;
+}
+
+.orbit-dust {
+  position: absolute;
+  left: 50%;
+  border-radius: 9999px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.orbit-dust-one {
+  top: 54px;
+  width: 210px;
+  height: 210px;
+  background: radial-gradient(
+    circle,
+    rgba(232, 220, 200, 0.22) 0%,
+    rgba(232, 220, 200, 0.1) 24%,
+    transparent 66%
+  );
+  filter: blur(12px);
+  opacity: 0.72;
+  animation: dustFloatOne 16s ease-in-out infinite;
+}
+
+.orbit-dust-two {
+  top: 88px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.36) 0%,
+    rgba(232, 220, 200, 0.14) 35%,
+    transparent 72%
+  );
+  filter: blur(8px);
+  opacity: 0.8;
+  animation: dustFloatTwo 11s ease-in-out infinite;
+}
+
+/* slower premium motion */
+
+.orbit-outer {
+  width: 286px;
+  height: 286px;
+  border: 1px solid rgba(202, 186, 164, 0.62);
+  opacity: 0.72;
+  animation:
+    orbitRotateSlow 42s linear infinite,
+    orbitDriftY 12s ease-in-out infinite;
+}
+
+.orbit-middle {
+  width: 214px;
+  height: 214px;
+  top: 36px;
+  border: 1px solid rgba(214, 200, 181, 0.58);
+  opacity: 0.84;
+  animation:
+    orbitRotateReverseSlow 31s linear infinite,
+    orbitDriftX 10s ease-in-out infinite;
+}
+
+.orbit-core {
+  top: 66px;
+  width: 154px;
+  height: 154px;
+  border: 1px solid rgba(214, 196, 171, 0.62);
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 255, 255, 0.88),
+      rgba(241, 232, 220, 0.94) 56%,
+      rgba(219, 201, 176, 0.76) 100%
+    );
+  box-shadow:
+    inset 0 0 42px rgba(255, 255, 255, 0.7),
+    0 30px 80px rgba(126, 103, 73, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  animation:
+    coreBreathePremium 12s ease-in-out infinite,
+    coreFloatPremium 18s ease-in-out infinite;
+}
+
+.orbit-glow {
+  top: 28px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    rgba(223, 207, 184, 0.24),
+    rgba(223, 207, 184, 0.12) 34%,
+    transparent 72%
+  );
+  filter: blur(18px);
+  animation: glowPulsePremium 14s ease-in-out infinite;
+}
+
+/* subtle parallax layers */
+
+.orbit-parallax-slow {
+  animation-name: orbitRotateSlow, orbitParallaxSlow;
+  animation-duration: 42s, 13s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
+.orbit-parallax-fast {
+  animation-name: orbitRotateReverseSlow, orbitParallaxFast;
+  animation-duration: 31s, 9s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
+.orbit-parallax-mid {
+  animation-name: orbitRotateMicro, orbitParallaxMid;
+  animation-duration: 34s, 11s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
+/* keyframes */
+
+@keyframes orbitRotateSlow {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@keyframes orbitRotateReverseSlow {
+  from {
+    transform: translateX(-50%) rotate(360deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(0deg);
+  }
+}
+
+@keyframes orbitRotateMicro {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@keyframes orbitParallaxSlow {
+  0%, 100% {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  50% {
+    margin-left: -4px;
+    margin-top: 3px;
+  }
+}
+
+@keyframes orbitParallaxFast {
+  0%, 100% {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  50% {
+    margin-left: 5px;
+    margin-top: -4px;
+  }
+}
+
+@keyframes orbitParallaxMid {
+  0%, 100% {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  50% {
+    margin-left: 2px;
+    margin-top: -3px;
+  }
+}
+
+@keyframes orbitDriftY {
+  0%, 100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 4px;
+  }
+}
+
+@keyframes orbitDriftX {
+  0%, 100% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: -3px;
+  }
+}
+
+@keyframes orbitTiltOne {
+  0%, 100% {
+    transform: rotate(16deg) scaleX(0.88) scaleY(1.08);
+    opacity: 0.84;
+  }
+  50% {
+    transform: rotate(20deg) scaleX(0.9) scaleY(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes orbitTiltTwo {
+  0%, 100% {
+    transform: rotate(-22deg) scaleX(1.04) scaleY(0.9);
+    opacity: 0.76;
+  }
+  50% {
+    transform: rotate(-18deg) scaleX(1.07) scaleY(0.92);
+    opacity: 0.92;
+  }
+}
+
+@keyframes coreBreathePremium {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.035);
+  }
+}
+
+@keyframes coreFloatPremium {
+  0%, 100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -5px;
+  }
+}
+
+@keyframes glowPulsePremium {
+  0%, 100% {
+    opacity: 0.62;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.88;
+    transform: translateX(-50%) scale(1.05);
+  }
+}
+
+@keyframes dustFloatOne {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.66;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.06);
+    opacity: 0.84;
+  }
+}
+
+@keyframes dustFloatTwo {
+  0%, 100% {
+    transform: translateX(-50%) scale(0.98);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+    opacity: 0.92;
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-inner {
+    width: 108px;
+    height: 108px;
+    top: 56px;
+  }
+
+  .orbit-path {
+    width: 230px;
+    height: 230px;
+  }
+
+  .orbit-dust-one {
+    width: 170px;
+    height: 170px;
+    top: 44px;
+  }
+
+  .orbit-dust-two {
+    width: 96px;
+    height: 96px;
+    top: 70px;
+  }
+}
 
 .hero-core {
   width: 120px;
@@ -378,17 +727,4 @@ a {
   font-size: 2.4rem;
   line-height: 1;
   letter-spacing: -0.03em;
-}
-
-.image-frame {
-  overflow: hidden;
-  border-radius: 34px;
-}
-
-.image-frame img {
-  transition: transform 0.8s ease;
-}
-
-.image-frame:hover img {
-  transform: scale(1.03);
 }
