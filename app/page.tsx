@@ -18,8 +18,8 @@ const features = [
 
 export default function HomePage() {
   return (
-    <main className="bg-[#F3EEE6] text-[#26231F]">
-      <section className="relative overflow-hidden border-b border-black/10">
+    <main className="home-premium bg-[#F3EEE6] text-[#26231F]">
+      <section className="home-hero relative overflow-hidden border-b border-black/10">
         <div className="hero-light absolute inset-0" />
         <div className="hero-noise absolute inset-0" />
 
@@ -52,14 +52,14 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contacts"
-                className="inline-flex h-14 items-center justify-center rounded-full bg-[#171614] px-8 text-base font-medium text-[#F8F4EE] transition duration-300 hover:-translate-y-0.5 hover:bg-[#26231F] hover:shadow-[0_16px_40px_rgba(23,22,20,0.18)]"
+                className="hp-btn hp-btn-primary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
               >
                 Записаться на консультацию
               </Link>
 
               <Link
                 href="/format"
-                className="inline-flex h-14 items-center justify-center rounded-full border border-[#CBBEAD] bg-[#F7F2EB]/80 px-8 text-base font-medium text-[#26231F] transition duration-300 hover:-translate-y-0.5 hover:border-[#B6A68F] hover:bg-[#FBF8F3] hover:shadow-[0_12px_30px_rgba(92,72,46,0.08)]"
+                className="hp-btn hp-btn-secondary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
               >
                 О формате работы
               </Link>
@@ -75,7 +75,7 @@ export default function HomePage() {
               ].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-[#D7CCBE] bg-[#F7F2EC]/80 px-4 py-2 text-sm text-[#5F584F] shadow-[0_8px_20px_rgba(92,72,46,0.04)]"
+                  className="hp-chip rounded-full border px-4 py-2 text-sm"
                 >
                   {item}
                 </span>
@@ -265,13 +265,13 @@ export default function HomePage() {
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link
                     href="/faq"
-                    className="inline-flex h-14 items-center justify-center rounded-full border border-[#CBBEAD] bg-[#FAF6F0] px-8 text-base font-medium text-[#26231F] transition hover:-translate-y-0.5 hover:border-[#B6A68F]"
+                    className="hp-btn hp-btn-secondary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
                   >
                     Читать FAQ
                   </Link>
                   <Link
                     href="/contacts"
-                    className="inline-flex h-14 items-center justify-center rounded-full bg-[#171614] px-8 text-base font-medium text-[#F8F4EE] transition hover:-translate-y-0.5 hover:bg-[#26231F]"
+                    className="hp-btn hp-btn-primary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
                   >
                     Связаться со мной
                   </Link>

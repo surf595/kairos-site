@@ -331,15 +331,250 @@ img {
   background: #b7a18a;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* =========================================================
+   SAFE PREMIUM LAYER — ONLY FOR HOMEPAGE
+   ========================================================= */
+
+.home-premium {
+  isolation: isolate;
+}
+
+.home-premium .home-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 6% 10% auto;
+  width: min(32vw, 420px);
+  height: min(32vw, 420px);
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(187, 168, 143, 0.16),
+    rgba(187, 168, 143, 0.06) 42%,
+    transparent 72%
+  );
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-premium .hp-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease,
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+
+.home-premium .hp-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+.home-premium .hp-btn:hover::before {
+  opacity: 1;
+}
+
+.home-premium .hp-btn:hover {
+  transform: translateY(-2px);
+}
+
+.home-premium .hp-btn-primary {
+  background: linear-gradient(180deg, #1a1815 0%, #26221d 100%);
+  color: #f8f4ee;
+  box-shadow:
+    0 16px 40px rgba(23, 22, 20, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.home-premium .hp-btn-primary:hover {
+  background: linear-gradient(180deg, #23201c 0%, #2d2924 100%);
+  box-shadow:
+    0 20px 48px rgba(23, 22, 20, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.home-premium .hp-btn-secondary {
+  border: 1px solid #cbbdad;
+  background: linear-gradient(
+    180deg,
+    rgba(251, 248, 243, 0.92),
+    rgba(247, 242, 235, 0.8)
+  );
+  color: #26231f;
+  box-shadow:
+    0 12px 30px rgba(92, 72, 46, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.home-premium .hp-btn-secondary:hover {
+  border-color: #b6a68f;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 248, 0.96),
+    rgba(249, 244, 237, 0.86)
+  );
+  box-shadow:
+    0 16px 36px rgba(92, 72, 46, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
+.home-premium .hp-chip {
+  border-color: #d7ccbe;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 242, 236, 0.9),
+    rgba(247, 242, 236, 0.72)
+  );
+  color: #5f584f;
+  box-shadow:
+    0 8px 20px rgba(92, 72, 46, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.home-premium .hp-chip:hover {
+  transform: translateY(-1px);
+  border-color: #cabaa4;
+  box-shadow:
+    0 12px 24px rgba(92, 72, 46, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.home-premium .soft-card,
+.home-premium .glass-panel {
+  will-change: transform;
+}
+
+.home-premium .glass-panel {
+  border-color: rgba(217, 206, 192, 0.92);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.56),
+    rgba(255, 255, 255, 0.26)
+  );
+  box-shadow:
+    0 34px 90px rgba(92, 72, 46, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.home-premium .soft-card {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+.home-premium h1,
+.home-premium h2 {
+  text-wrap: balance;
+}
+
+.home-premium section {
+  position: relative;
+}
+
+.home-premium section > div {
+  position: relative;
+  z-index: 1;
+}
+
+.home-premium .hero-light,
+.home-premium .hero-noise {
+  pointer-events: none;
+}
+
+.home-premium .fade-in-up {
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 1024px) {
+  .home-premium .hero-orbit-system {
+    top: 56px;
+    height: 250px;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
+  .home-premium .orbit-outer {
+    width: 258px;
+    height: 258px;
+  }
+
+  .home-premium .orbit-middle {
+    width: 192px;
+    height: 192px;
+    top: 34px;
+  }
+
+  .home-premium .orbit-core {
+    width: 142px;
+    height: 142px;
+    top: 60px;
+  }
+
+  .home-premium .orbit-glow {
+    width: 220px;
+    height: 220px;
+    top: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-premium .hp-btn {
+    width: 100%;
+  }
+
+  .home-premium .hero-orbit-system {
+    top: 52px;
+    height: 220px;
+  }
+
+  .home-premium .orbit-outer {
+    width: 220px;
+    height: 220px;
+  }
+
+  .home-premium .orbit-middle {
+    width: 164px;
+    height: 164px;
+    top: 28px;
+  }
+
+  .home-premium .orbit-core {
+    width: 120px;
+    height: 120px;
+    top: 50px;
+  }
+
+  .home-premium .orbit-glow {
+    width: 190px;
+    height: 190px;
+    top: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-premium .hp-btn,
+  .home-premium .hp-chip,
+  .home-premium .soft-card,
+  .home-premium .glass-panel {
     transition: none !important;
   }
 }
