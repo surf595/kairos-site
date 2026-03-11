@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "С чем я работаю — Kairos Therapy",
+  description:
+    "Темы, с которыми чаще всего обращаются в индивидуальную психотерапию: тревога, отношения, кризисы, самооценка и внутренние конфликты.",
+};
+
 const workItems = [
   {
     title: "Тревога и внутреннее напряжение",
@@ -31,50 +40,74 @@ const workItems = [
   },
 ] as const;
 
-export default function WorkSection() {
+export default function ServicesPage() {
   return (
-    <section
-      id="work"
-      className="border-t border-stone-300 bg-[#f3efe8]"
-      aria-labelledby="work-section-title"
-    >
-      <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-24">
-        <div className="max-w-3xl">
-          <p className="mb-3 text-sm uppercase tracking-[0.18em] text-stone-500">
+    <main className="bg-[#f3efe8] text-stone-800">
+      <section className="border-b border-black/10">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-20 lg:px-12">
+          <p className="text-xs uppercase tracking-[0.22em] text-stone-500">
             Направления работы
           </p>
-
-          <h2
-            id="work-section-title"
-            className="text-4xl font-medium tracking-tight text-stone-800 md:text-5xl"
-          >
-            С чем ко мне обращаются
-          </h2>
-
-          <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 md:text-lg">
-            В терапию часто приходят не только с конкретной проблемой, но и с
-            ощущением, что в жизни что-то повторяется, застревает или теряет
-            смысл.
+          <h1 className="mt-4 max-w-4xl text-4xl font-medium tracking-tight md:text-5xl">
+            С чем можно обратиться в терапию
+          </h1>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-stone-600">
+            Необязательно иметь «правильный запрос» или точный диагноз. Часто
+            человек приходит с внутренней спутанностью, усталостью, напряжением
+            или повторяющимися сложностями в отношениях и жизненных выборах.
           </p>
         </div>
+      </section>
 
-        <div className="mt-12 grid gap-5 md:mt-14 md:grid-cols-2 xl:grid-cols-3">
-          {workItems.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-[28px] border border-stone-300/90 bg-[#f6f2eb] p-7 transition duration-300 hover:-translate-y-0.5 hover:border-stone-400 hover:bg-[#f8f5ef] hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
-            >
-              <h3 className="text-2xl font-medium leading-tight text-stone-800">
-                {item.title}
-              </h3>
+      <section aria-labelledby="work-section-title">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-20 lg:px-12">
+          <h2
+            id="work-section-title"
+            className="max-w-3xl text-3xl font-medium tracking-tight md:text-4xl"
+          >
+            Темы, которые мы можем исследовать в совместной работе
+          </h2>
 
-              <p className="mt-4 text-[15px] leading-7 text-stone-600">
-                {item.description}
-              </p>
-            </article>
-          ))}
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {workItems.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[28px] border border-stone-300/90 bg-[#f6f2eb] p-7"
+              >
+                <h3 className="text-2xl font-medium leading-tight text-stone-800">
+                  {item.title}
+                </h3>
+
+                <p className="mt-4 text-[15px] leading-7 text-stone-600">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="border-t border-black/10 bg-[#efe8dd]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-14 md:px-10 lg:flex-row lg:items-end lg:justify-between lg:px-12">
+          <div>
+            <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
+              Если пока трудно сформулировать, что именно происходит
+            </h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-stone-600 md:text-lg">
+              Это нормально. Первая встреча может быть пространством, где вы
+              спокойно расскажете о текущем состоянии, а мы вместе проясним,
+              подходит ли вам такой формат помощи.
+            </p>
+          </div>
+
+          <Link
+            href="/contacts"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-[#1f1c18] px-6 text-sm font-medium text-[#f7f3ec] transition hover:bg-[#2b2621]"
+          >
+            Связаться и записаться
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }

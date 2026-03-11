@@ -15,9 +15,16 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Kairos Therapy — Психотерапия в Таллине",
+  metadataBase: new URL("https://kairos.ee"),
+  title: {
+    default: "Kairos Therapy — Психотерапия в Таллине",
+    template: "%s | Kairos Therapy",
+  },
   description:
     "Частная психотерапевтическая практика в Таллине. Индивидуальная работа для взрослых: очно и онлайн.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 const navItems = [

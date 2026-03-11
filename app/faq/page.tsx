@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Вопросы и ответы — Kairos Therapy",
+  description:
+    "Ответы на частые вопросы о первой встрече, формате психотерапии, конфиденциальности и правилах работы.",
+};
+
 const firstContactFaq = [
   {
     question: "Как проходит первая встреча с психологом?",
@@ -223,7 +231,7 @@ export default function FAQPage() {
       <section className="mx-auto max-w-5xl px-6 py-16 md:px-8 md:py-24">
         <header className="mb-14">
           <h1 className="text-5xl font-semibold tracking-tight text-neutral-900 md:text-6xl">
-            FAQ
+            Вопросы и ответы
           </h1>
           <p className="mt-4 max-w-2xl text-[18px] leading-8 text-neutral-700">
             Ответы на частые вопросы о начале терапии, формате работы,
