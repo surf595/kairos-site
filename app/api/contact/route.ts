@@ -26,6 +26,10 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function isValidPhone(phone: string): boolean {
+  return /^[0-9+()\-\s]{6,30}$/.test(phone);
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -78,6 +82,7 @@ export async function POST(req: NextRequest) {
 
     const name = normalizeText(clean(formData.get("name")));
     const email = normalizeText(clean(formData.get("email")));
+    const phone = normalizeText(clean(formData.get("phone")));
     const message = normalizeText(clean(formData.get("message")));
     const company = clean(formData.get("company"));
     const formStartedAtRaw = clean(formData.get("formStartedAt"));
@@ -110,6 +115,10 @@ export async function POST(req: NextRequest) {
 
     if (!email || email.length > 150 || !isValidEmail(email)) {
       return json({ error: "Некорректный email." }, 400);
+    }
+
+    if (phone && !isValidPhone(phone)) {
+      return json({ error: "Некорректный номер телефона." }, 400);
     }
 
     if (!message || message.length < 10 || message.length > 3000) {
@@ -158,6 +167,7 @@ export async function POST(req: NextRequest) {
         "",
         `Имя: ${name}`,
         `Email: ${email}`,
+        `Телефон: ${phone || "не указан"}`,
         `IP: ${ip}`,
         "",
         "Сообщение:",
@@ -168,6 +178,7 @@ export async function POST(req: NextRequest) {
           <h2>Новая заявка с сайта Kairos Therapy</h2>
           <p><strong>Имя:</strong> ${escapeHtml(name)}</p>
           <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p><strong>Телефон:</strong> ${escapeHtml(phone || "не указан")}</p>
           <p><strong>IP:</strong> ${escapeHtml(ip)}</p>
           <p><strong>Сообщение:</strong></p>
           <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>

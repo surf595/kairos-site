@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Обо мне — Kairos",
+  title: "Обо мне — Kairos Therapy",
   description: "О практике, профессиональной позиции, образовании и формате работы.",
 };
 

@@ -32,7 +32,7 @@ const navItems = [
   { href: "/about", label: "Обо мне" },
   { href: "/services", label: "С чем я работаю" },
   { href: "/format", label: "Формат работы" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/faq", label: "Вопросы и ответы" },
   { href: "/contacts", label: "Контакты" },
 ];
 
@@ -187,13 +187,13 @@ export default function RootLayout({
                     href="/privacy"
                     className="transition hover:text-[#312D28]"
                   >
-                    Privacy Policy
+                    Политика конфиденциальности
                   </Link>
                   <Link
                     href="/terms"
                     className="transition hover:text-[#312D28]"
                   >
-                    Terms & Conditions
+                    Условия использования
                   </Link>
                 </div>
               </div>

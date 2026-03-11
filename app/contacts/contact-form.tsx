@@ -123,6 +123,20 @@ export default function ContactForm() {
       </div>
 
       <div>
+        <label htmlFor="phone" className="mb-1 block text-sm text-[#49504a]">
+          Телефон (необязательно)
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          maxLength={30}
+          autoComplete="tel"
+          className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+        />
+      </div>
+
+      <div>
         <label htmlFor="message" className="mb-1 block text-sm text-[#49504a]">
           Сообщение
         </label>
@@ -144,6 +158,11 @@ export default function ContactForm() {
       >
         {isSubmitting ? "Отправка..." : "Отправить сообщение"}
       </button>
+
+      <p className="text-xs leading-relaxed text-[#767b75]">
+        Нажимая кнопку, вы соглашаетесь с обработкой персональных данных в
+        соответствии с политикой конфиденциальности.
+      </p>
 
       {status.type === "success" && (
         <p className="text-sm leading-relaxed text-green-700">

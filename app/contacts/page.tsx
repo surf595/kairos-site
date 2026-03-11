@@ -18,6 +18,11 @@ export default function ContactsPage() {
           Вы можете написать через форму обратной связи или связаться со мной
           напрямую. Приём осуществляется по предварительной записи.
         </p>
+
+        <p className="mt-3 text-sm leading-relaxed text-[#6a706a]">
+          Обычно я отвечаю в течение 24–48 часов. Ваше обращение остаётся
+          конфиденциальным.
+        </p>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
@@ -30,6 +35,12 @@ export default function ContactsPage() {
             Вы можете кратко описать ваш вопрос или ситуацию. Я постараюсь
             ответить в ближайшее время.
           </p>
+
+          <ol className="mt-4 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-[#6a706a]">
+            <li>Вы оставляете короткое сообщение.</li>
+            <li>Я возвращаюсь к вам и предлагаю возможные окна для встречи.</li>
+            <li>Мы согласуем удобный формат: очно или онлайн.</li>
+          </ol>
 
           <ContactForm />
         </div>
