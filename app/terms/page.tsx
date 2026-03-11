@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Условия использования — Kairos Therapy",
-  description: "Условия использования сайта и оказания услуг Kairos Therapy.",
-};
+export const metadata = buildPageMetadata({
+  title: "Условия использования",
+  description: "Условия использования сайта и оказания психологических услуг.",
+  path: "/terms",
+});
 
 function Section({
   title,
@@ -31,7 +32,7 @@ export default function TermsPage() {
           </h1>
 
           <p className="mt-5 max-w-3xl text-[16px] leading-7 text-[#595249]">
-            Настоящие условия регулируют использование сайта Kairos Therapy и
+            Настоящие условия регулируют использование сайта частной практики и
             порядок оказания психологических услуг.
           </p>
 
@@ -43,7 +44,7 @@ export default function TermsPage() {
         <div className="mt-10 space-y-10 rounded-[28px] border border-[#D8CCBE] bg-[#FBF8F3] p-8 md:p-10">
           <Section title="1. Поставщик услуг">
             <p>
-              Kairos Therapy OÜ
+              Оператор практики
               <br />
               Регистрационный номер: 17338080
               <br />
@@ -57,7 +58,7 @@ export default function TermsPage() {
 
           <Section title="2. Характер услуг">
             <p>
-              Kairos Therapy предоставляет психологическое консультирование и
+              Практика предоставляет психологическое консультирование и
               психотерапию.
             </p>
             <p>
@@ -115,7 +116,7 @@ export default function TermsPage() {
 
           <Section title="9. Изменение условий">
             <p>
-              Kairos Therapy может обновлять настоящие условия. Актуальная версия
+              Оператор практики может обновлять настоящие условия. Актуальная версия
               всегда доступна на этой странице.
             </p>
           </Section>

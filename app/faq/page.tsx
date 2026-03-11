@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Вопросы и ответы — Kairos Therapy",
+export const metadata = buildPageMetadata({
+  title: "Вопросы и ответы",
   description:
     "Ответы на частые вопросы о первой встрече, формате психотерапии, конфиденциальности и правилах работы.",
-};
+  path: "/faq",
+});
 
 const firstContactFaq = [
   {

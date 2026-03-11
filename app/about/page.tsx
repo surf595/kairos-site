@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import Image from "next/image";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Обо мне — Kairos Therapy",
+export const metadata = buildPageMetadata({
+  title: "Обо мне",
   description: "О практике, профессиональной позиции, образовании и формате работы.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

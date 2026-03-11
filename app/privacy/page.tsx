@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Политика конфиденциальности — Kairos Therapy",
-  description: "Политика обработки персональных данных Kairos Therapy OÜ.",
-};
+export const metadata = buildPageMetadata({
+  title: "Политика конфиденциальности",
+  description: "Политика обработки персональных данных частной практики.",
+  path: "/privacy",
+});
 
 function Section({
   title,
@@ -31,7 +32,7 @@ export default function PrivacyPage() {
           </h1>
 
           <p className="mt-5 max-w-3xl text-[16px] leading-7 text-[#595249]">
-            Здесь описано, какие данные собираются при обращении в Kairos Therapy,
+            Здесь описано, какие данные собираются при обращении в частную практику,
             как они используются и как защищаются.
           </p>
 
@@ -43,7 +44,7 @@ export default function PrivacyPage() {
         <div className="mt-10 space-y-10 rounded-[28px] border border-[#D8CCBE] bg-[#FBF8F3] p-8 md:p-10">
           <Section title="1. Оператор персональных данных">
             <p>
-              Kairos Therapy OÜ
+              Оператор практики
               <br />
               Регистрационный номер: 17338080
               <br />

@@ -23,7 +23,7 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:px-10 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-12">
           <div className="max-w-3xl">
             <p className="text-xs uppercase tracking-[0.3em] text-[#7A7268]">
-              Kairos Therapy OÜ • частная практика
+              Частная практика в Таллине
             </p>
 
             <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.03em] text-[#171614] sm:text-5xl lg:text-6xl">
@@ -71,7 +71,7 @@ export default function HomePage() {
             <div className="relative aspect-[4/5]">
               <Image
                 src="/images/cabin/cabin.jpeg"
-                alt="Кабинет психотерапии Kairos Therapy в Таллине"
+                alt="Кабинет психотерапии в Таллине"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 44vw"

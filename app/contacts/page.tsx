@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "../lib/seo";
 import ContactForm from "./contact-form";
 
-export const metadata: Metadata = {
-  title: "Контакты — Kairos Therapy",
-  description: "Контакты психотерапевтической практики Kairos Therapy в Таллине.",
-};
+export const metadata = buildPageMetadata({
+  title: "Контакты",
+  description: "Контакты частной психотерапевтической практики в Таллине.",
+  path: "/contacts",
+});
 
 export default function ContactsPage() {
   return (
@@ -103,7 +104,7 @@ export default function ContactsPage() {
               </div>
 
               <div className="pt-2 text-sm text-[#737972]">
-                <p>Kairos Therapy OÜ</p>
+                <p>Юридические данные предоставляются по запросу.</p>
                 <p>Reg. nr. 17338080</p>
               </div>
             </div>
@@ -111,7 +112,7 @@ export default function ContactsPage() {
 
           <div className="overflow-hidden rounded-3xl border border-[#2f3331]/15 bg-white">
             <iframe
-              title="Карта Kairos Therapy"
+              title="Карта кабинета"
               src="https://www.google.com/maps?q=Tatari+56+Tallinn&output=embed"
               width="100%"
               height="320"

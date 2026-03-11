@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "С чем я работаю — Kairos Therapy",
+export const metadata = buildPageMetadata({
+  title: "С чем я работаю",
   description:
     "Темы, с которыми чаще всего обращаются в индивидуальную психотерапию: тревога, отношения, кризисы, самооценка и внутренние конфликты.",
-};
+  path: "/services",
+});
 
 const workItems = [
   {

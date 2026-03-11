@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Формат работы — Kairos Therapy",
+export const metadata = buildPageMetadata({
+  title: "Формат работы",
   description:
     "Как организована психотерапия: длительность сессии, регулярность встреч, очный и онлайн формат, стоимость и первые шаги.",
-};
+  path: "/format",
+});
 
 const items = [
   {

@@ -44,6 +44,12 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${inter.variable} ${cormorant.variable}`}>
       <body className="min-h-screen bg-[#F3EEE6] font-sans text-[#26231F] antialiased">
+        <a
+          href="#main-content"
+          className="skip-link"
+        >
+          Перейти к содержимому
+        </a>
         <div className="relative min-h-screen overflow-x-hidden">
           <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.55),transparent_32%),linear-gradient(180deg,#F5F1EA_0%,#F3EEE6_45%,#EFE7DC_100%)]" />
           <div className="pointer-events-none fixed inset-0 -z-10 opacity-[0.04] [background-image:radial-gradient(#000_0.7px,transparent_0.7px)] [background-size:8px_8px]" />
@@ -109,7 +115,7 @@ export default function RootLayout({
             </div>
           </header>
 
-          {children}
+          <div id="main-content">{children}</div>
 
           <footer className="border-t border-black/10 bg-[#ECE3D7]">
             <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 lg:px-12">
