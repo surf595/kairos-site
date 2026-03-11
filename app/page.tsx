@@ -1,5 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import RelatedLinks from "./components/related-links";
+import { firstContactFlow, relatedSections } from "./lib/content";
 
 const themes = [
   "Тревога и внутреннее напряжение",
@@ -10,262 +12,123 @@ const themes = [
   "Ощущение, что с вами «что-то не так»",
 ];
 
-const features = [
-  { title: "Индивидуальная практика", value: "Для взрослых" },
-  { title: "Формат встречи", value: "Очно и онлайн" },
-  { title: "Длительность", value: "50 минут" },
-  { title: "Язык работы", value: "Русский" },
-];
+
 
 export default function HomePage() {
   return (
-    <main className="home-premium bg-[#F3EEE6] text-[#26231F]">
-      <section className="home-hero relative overflow-hidden border-b border-black/10">
-        <div className="hero-light absolute inset-0" />
-        <div className="hero-noise absolute inset-0" />
-
-        <div className="relative mx-auto grid min-h-[calc(100vh-76px)] max-w-7xl items-center gap-14 px-6 py-16 md:px-10 lg:grid-cols-[1.08fr_0.92fr] lg:px-12 lg:py-24">
-          <div className="max-w-3xl fade-in-up">
-            <p className="mb-6 text-xs uppercase tracking-[0.34em] text-[#7A7268]">
-              Kairos Therapy OÜ• частная практика
+    <main className="bg-[#F3EEE6] text-[#26231F]">
+      <section className="border-b border-black/10">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:px-10 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-12">
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#7A7268]">
+              Частная практика в Таллине
             </p>
 
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#171614] sm:text-6xl lg:text-7xl">
-              Психотерапия как пространство для понимания себя
+            <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.03em] text-[#171614] sm:text-5xl lg:text-6xl">
+              Психотерапия как спокойное пространство для понимания себя
             </h1>
 
-            <div className="mt-8 h-px w-24 bg-[#B7AA96]" />
-
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-[#575148] sm:text-xl">
-              Частная практика в Таллине для взрослых. Очная и онлайн работа, в
-              которой можно не торопиться, постепенно распутывая внутренние
-              конфликты, повторяющиеся сценарии, напряжение в отношениях и
-              жизненные кризисы.
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#575148]">
+              Частная практика в Таллине для взрослых. Очная и онлайн работа,
+              в которой можно не торопиться и постепенно разбираться в
+              переживаниях, внутренних конфликтах, отношениях и жизненных
+              кризисах.
             </p>
 
-            <p className="mt-6 max-w-2xl text-base leading-8 text-[#6C645A]">
-              Здесь важны не только симптомы и внешние события, но и то, как
-              устроен ваш внутренний мир: переживания, бессознательные
-              конфликты, способы защищаться, страх близости, вина, стыд и
-              одиночество.
-            </p>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contacts"
-                className="hp-btn hp-btn-primary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
+                className="inline-flex h-13 items-center justify-center rounded-full bg-[#171614] px-7 text-sm font-medium text-[#F7F3EC] transition hover:bg-[#27231F]"
               >
-                Записаться на консультацию
+                Записаться на первую встречу
               </Link>
 
               <Link
                 href="/format"
-                className="hp-btn hp-btn-secondary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
+                className="inline-flex h-13 items-center justify-center rounded-full border border-[#CFC2B2] bg-[#FBF8F3]/85 px-7 text-sm font-medium text-[#2A2722] transition hover:border-[#B8A893]"
               >
-                О формате работы
+                Как устроен формат работы
               </Link>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              {[
-                "Индивидуальная практика",
-                "50 минут",
-                "Очно в Таллине",
-                "Онлайн",
-                "Русский язык",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="hp-chip rounded-full border px-4 py-2 text-sm"
-                >
-                  {item}
-                </span>
-              ))}
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {["Индивидуальная практика", "50 минут", "Очно и онлайн", "Русский язык"].map(
+                (item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-[#D8CCBE] bg-[#F8F4EE] px-4 py-2 text-sm text-[#5E564D]"
+                  >
+                    {item}
+                  </span>
+                )
+              )}
             </div>
           </div>
 
-          <div className="relative fade-in-up [animation-delay:160ms]">
-            <div className="relative mx-auto max-w-[560px]">
-              <div className="absolute -left-10 top-10 hidden h-40 w-40 rounded-full bg-[#E8DED0] blur-3xl md:block" />
-              <div className="absolute -right-6 bottom-8 hidden h-52 w-52 rounded-full bg-[#D8C7AF]/70 blur-3xl md:block" />
+          <div className="overflow-hidden rounded-[34px] border border-[#D8CCBE] bg-[#F8F4EE] shadow-[0_24px_60px_rgba(92,72,46,0.08)]">
+            <div className="relative aspect-[4/5]">
+              <Image
+                src="/images/cabin/cabin.jpeg"
+                alt="Кабинет психотерапии в Таллине"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 44vw"
+                priority
+              />
+            </div>
 
-              <div className="glass-panel relative overflow-hidden rounded-[38px] border border-[#D9CEC0] p-6 sm:p-8">
-                <div className="rounded-[30px] border border-[#DED4C8] bg-[linear-gradient(180deg,#F6F1EA_0%,#EFE7DC_100%)] p-6 sm:p-8">
-                  <div className="relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[24px] border border-[#E2D8CC] bg-[linear-gradient(160deg,rgba(255,255,255,0.62),rgba(238,229,217,0.72))] p-6 sm:p-7">
-                    <div className="hero-ambient-light absolute inset-0" />
-
-                    <div className="hero-orbit-system absolute inset-x-0 top-[72px] z-0 flex justify-center">
-  <div className="orbit orbit-outer orbit-parallax-slow" />
-  <div className="orbit orbit-middle orbit-parallax-fast" />
-  <div className="orbit orbit-inner orbit-parallax-mid" />
-  <div className="orbit-path orbit-path-one" />
-  <div className="orbit-path orbit-path-two" />
-  <div className="orbit-core" />
-  <div className="orbit-glow" />
-  <div className="orbit-dust orbit-dust-one" />
-  <div className="orbit-dust orbit-dust-two" />
-</div>
-
-                    <div className="relative flex h-full items-center justify-center">
-<div className="flex h-full items-center justify-center">
-  <svg
-    viewBox="0 0 300 300"
-    className="w-[260px]"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="150" cy="150" r="110" stroke="#CFC5B7" strokeWidth="1" fill="none"/>
-    <circle cx="150" cy="150" r="80" stroke="#DAD1C5" strokeWidth="1" fill="none"/>
-    <circle cx="150" cy="150" r="50" stroke="#E6DED3" strokeWidth="1" fill="none"/>
-
-    <path
-      d="M40 150 Q150 40 260 150"
-      stroke="#CBBEAD"
-      strokeWidth="1"
-      fill="none"
-    />
-
-    <path
-      d="M60 200 Q150 90 240 200"
-      stroke="#D6CCBF"
-      strokeWidth="1"
-      fill="none"
-    />
-
-    <circle cx="150" cy="150" r="6" fill="#9C7C5D"/>
-  </svg>
-</div>
-</div>
-
-                    <div className="relative z-10 mt-auto max-w-[300px]">
-                      <p className="text-sm leading-8 text-[#6B6259]">
-                        Спокойное пространство, в котором можно выдерживать
-                        сложные чувства, замечать скрытые связи и постепенно
-                        находить собственный язык для понимания себя.
-                      </p>
-                      <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-[#C8B79F] to-transparent" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-2 gap-3">
-                <div className="soft-card rounded-[24px] border border-[#D9CEC0] bg-[#F7F2EB]/80 p-5">
-                  <div className="text-xs uppercase tracking-[0.22em] text-[#8A7E70]">
-                    подход
-                  </div>
-                  <div className="mt-3 text-base leading-7 text-[#3B3834]">
-                    Психодинамическая и аналитически ориентированная работа
-                  </div>
-                </div>
-
-                <div className="soft-card rounded-[24px] border border-[#D9CEC0] bg-[#F7F2EB]/80 p-5">
-                  <div className="text-xs uppercase tracking-[0.22em] text-[#8A7E70]">
-                    пространство
-                  </div>
-                  <div className="mt-3 text-base leading-7 text-[#3B3834]">
-                    Тёплая, спокойная атмосфера без спешки и давления
-                  </div>
-                </div>
-              </div>
+            <div className="border-t border-[#D8CCBE] bg-[#F6F1EA] px-6 py-5">
+              <p className="text-sm leading-7 text-[#5D554B]">
+                Устойчивое пространство, в котором можно говорить без спешки и
+                внешнего давления.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+      <section className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-20 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
               О практике
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Не быстрые советы, а пространство для внутренней работы
+              Не быстрые советы, а совместная внутренняя работа
             </h2>
           </div>
 
-          <div className="space-y-6 text-lg leading-8 text-[#5A534A]">
+          <div className="space-y-5 text-lg leading-8 text-[#5A534A]">
             <p>
-              Иногда человек приходит не с ясным запросом, а с ощущением
-              внутренней спутанности: тревога, истощение, повторяющиеся
-              конфликты, напряжение в отношениях, чувство одиночества,
-              невозможность опереться на себя.
+              В терапию часто приходят не с готовой формулировкой проблемы, а с
+              ощущением внутренней спутанности, тревоги, истощения или повторяющихся
+              сложностей в отношениях.
             </p>
             <p>
-              В терапии мы не только обсуждаем происходящее, но и пытаемся
-              понять, как устроен ваш способ переживать, защищаться, вступать в
-              отношения, выдерживать близость, злость, вину, стыд и зависимость.
-            </p>
-            <p>
-              Такая работа требует времени, внимания и безопасной рамки. Именно
-              поэтому для меня важны и содержание сессии, и само пространство, в
-              котором эта встреча происходит.
+              Мы исследуем не только события, но и то, как устроен ваш способ
+              переживать, защищаться, вступать в отношения, выдерживать близость,
+              вину, стыд и одиночество.
             </p>
           </div>
         </div>
       </section>
-<section className="border-y border-black/10 bg-[#F6F1EA]">
-  <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
 
-    <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-
-      <div>
-        <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
-          Пространство
-        </p>
-
-        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-          Кабинет в Таллине
-        </h2>
-
-        <p className="mt-6 max-w-xl text-lg leading-8 text-[#5A534A]">
-          Очная работа проходит в спокойном пространстве, где можно говорить без
-          спешки и внешнего давления. В терапии важна не только беседа, но и
-          сама рамка встречи — место, время и устойчивость пространства.
-        </p>
-
-        <p className="mt-4 max-w-xl text-lg leading-8 text-[#5A534A]">
-          Иногда именно возможность просто быть услышанным в таком месте уже
-          становится началом внутреннего движения.
-        </p>
-
-      </div>
-
-      <div className="overflow-hidden rounded-[34px] border border-[#D8CCBE] bg-[#F8F4EE] shadow-[0_24px_60px_rgba(92,72,46,0.08)]">
-        <div className="relative aspect-[4/5]">
-
-          <Image
-            src="/images/cabin/cabin.jpeg"
-            alt="Кабинет психотерапии Kairos Therapy в Таллине"
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            priority
-          />
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
       <section className="border-y border-black/10 bg-[#EFE7DC]">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-20 lg:px-12">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
                 С чем я работаю
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                Темы, с которыми чаще всего приходят в терапию
+                Темы, с которыми чаще всего обращаются
               </h2>
             </div>
             <Link
               href="/services"
               className="text-sm text-[#6B6259] underline decoration-[#B7AA96] underline-offset-4"
             >
-              Подробнее о направлениях работы
+              Все направления работы
             </Link>
           </div>
 
@@ -273,7 +136,7 @@ export default function HomePage() {
             {themes.map((theme) => (
               <div
                 key={theme}
-                className="soft-card rounded-[28px] border border-[#D8CCBE] bg-[#F7F2EB]/85 p-6"
+                className="rounded-[28px] border border-[#D8CCBE] bg-[#F7F2EB]/85 p-6"
               >
                 <div className="flex items-start gap-4">
                   <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-[#9C7C5D]" />
@@ -285,91 +148,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-20 lg:px-12">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
-              Формат работы
+              Первый шаг
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Рамка, которая помогает выдерживать и понимать процесс
+              Понятный и бережный путь к первой встрече
             </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[#5A534A]">
-              Сеттинг — это не формальность, а часть терапевтической работы.
-              Постоянство времени, места и рамки помогает постепенно создавать
-              пространство, в котором может возникать доверие и осмысление.
+            <p className="mt-5 max-w-xl text-lg leading-8 text-[#5A534A]">
+              Можно обратиться и без «правильного запроса». На первой встрече мы
+              спокойно проясняем, что сейчас важно именно для вас.
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {features.map((item) => (
-              <div
-                key={item.title}
-                className="soft-card rounded-[28px] border border-[#D9CEC0] bg-[#F8F4EE] p-6"
+          <div className="rounded-[30px] border border-[#DACDBE] bg-[#F6F1EA]/90 p-6 md:p-8">
+            <ol className="space-y-3 text-[16px] leading-7 text-[#4F4941]">
+              {firstContactFlow.map((item, index) => (
+                <li key={item} className="flex gap-3">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#CCBCA7] text-xs font-medium text-[#6E5C49]">
+                    {index + 1}
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/contacts"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-[#171614] px-6 text-sm font-medium text-[#F7F3EC] transition hover:bg-[#27231F]"
               >
-                <div className="text-sm uppercase tracking-[0.18em] text-[#8A7E70]">
-                  {item.title}
-                </div>
-                <div className="mt-3 text-xl font-medium text-[#24211E]">
-                  {item.value}
-                </div>
-              </div>
-            ))}
+                Связаться и выбрать время
+              </Link>
+              <Link
+                href="/faq"
+                className="inline-flex h-12 items-center justify-center rounded-full border border-[#CFC2B2] bg-[#FBF8F3]/85 px-6 text-sm font-medium text-[#2A2722] transition hover:border-[#B8A893]"
+              >
+                Читать вопросы и ответы
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-black/10 bg-[#EDE4D7]">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
-          <div className="glass-panel overflow-hidden rounded-[36px] border border-[#D4C7B7] p-8 md:p-12">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
-                  Первая встреча
-                </p>
-                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                  Можно прийти и без “правильного запроса”
-                </h2>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#5A534A]">
-                  Нередко человек приходит с ощущением, что ему трудно
-                  объяснить, что именно происходит. Это нормально. Первая встреча
-                  нужна не для того, чтобы сразу всё сформулировать идеально, а
-                  чтобы начать совместно разбираться в происходящем.
-                </p>
 
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                  <Link
-                    href="/faq"
-                    className="hp-btn hp-btn-secondary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
-                  >
-                    Читать FAQ
-                  </Link>
-                  <Link
-                    href="/contacts"
-                    className="hp-btn hp-btn-primary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
-                  >
-                    Связаться со мной
-                  </Link>
-                </div>
-              </div>
-
-              <div className="rounded-[30px] border border-[#DACDBE] bg-[#F6F1EA]/90 p-6 shadow-[0_24px_60px_rgba(92,72,46,0.08)]">
-                <div className="rounded-[24px] border border-[#E1D6C9] bg-[#FBF8F3] p-6">
-                  <p className="text-sm leading-8 text-[#5D554B]">
-                    «Иногда внешне всё как будто в порядке, но внутри остаётся
-                    чувство, что жить становится всё труднее. В терапии важно не
-                    только облегчение симптома, но и понимание того, как
-                    складывается ваша внутренняя жизнь».
-                  </p>
-                  <div className="mt-6 h-px w-full bg-[#E2D8CC]" />
-                  <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[#8A7E70]">
-                    Kairos Therapy
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="mx-auto max-w-7xl px-6 pb-16 md:px-10 md:pb-20 lg:px-12">
+        <RelatedLinks
+          title="Навигация по сайту"
+          items={relatedSections}
+        />
       </section>
     </main>
   );

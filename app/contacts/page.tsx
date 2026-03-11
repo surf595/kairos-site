@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "../lib/seo";
+import { firstContactFlow, practiceInfo, relatedSections } from "../lib/content";
+import RelatedLinks from "../components/related-links";
 import ContactForm from "./contact-form";
 
-export const metadata: Metadata = {
-  title: "Контакты — Kairos Therapy",
-  description: "Контакты психотерапевтической практики Kairos Therapy в Таллине.",
-};
+export const metadata = buildPageMetadata({
+  title: "Контакты",
+  description: "Контакты частной психотерапевтической практики в Таллине.",
+  path: "/contacts",
+});
 
 export default function ContactsPage() {
   return (
@@ -18,6 +21,11 @@ export default function ContactsPage() {
           Вы можете написать через форму обратной связи или связаться со мной
           напрямую. Приём осуществляется по предварительной записи.
         </p>
+
+        <p className="mt-3 text-sm leading-relaxed text-[#6a706a]">
+          Обычно я отвечаю в течение {practiceInfo.responseTime}. Ваше обращение остаётся
+          конфиденциальным.
+        </p>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
@@ -30,6 +38,12 @@ export default function ContactsPage() {
             Вы можете кратко описать ваш вопрос или ситуацию. Я постараюсь
             ответить в ближайшее время.
           </p>
+
+          <ol className="mt-4 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-[#6a706a]">
+            {firstContactFlow.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
 
           <ContactForm />
         </div>
@@ -46,7 +60,7 @@ export default function ContactsPage() {
                   Телефон
                 </h3>
                 <a href="tel:+3725093008" className="hover:underline">
-                  +372 509 3008
+                  {practiceInfo.contactPhone}
                 </a>
               </div>
 
@@ -54,8 +68,8 @@ export default function ContactsPage() {
                 <h3 className="mb-1 text-base font-medium text-[#2f3331]">
                   Email
                 </h3>
-                <a href="mailto:info@kairos.ee" className="hover:underline">
-                  info@kairos.ee
+                <a href={`mailto:${practiceInfo.contactEmail}`} className="hover:underline">
+                  {practiceInfo.contactEmail}
                 </a>
               </div>
 
@@ -64,7 +78,7 @@ export default function ContactsPage() {
                   Адрес кабинета
                 </h3>
                 <p>
-                  Татари 56, кабинет 308
+                  {practiceInfo.officeAddress}
                   <br />
                   Таллин, Эстония
                 </p>
@@ -92,7 +106,7 @@ export default function ContactsPage() {
               </div>
 
               <div className="pt-2 text-sm text-[#737972]">
-                <p>Kairos Therapy OÜ</p>
+                <p>Юридические данные предоставляются по запросу.</p>
                 <p>Reg. nr. 17338080</p>
               </div>
             </div>
@@ -100,7 +114,7 @@ export default function ContactsPage() {
 
           <div className="overflow-hidden rounded-3xl border border-[#2f3331]/15 bg-white">
             <iframe
-              title="Карта Kairos Therapy"
+              title="Карта кабинета"
               src="https://www.google.com/maps?q=Tatari+56+Tallinn&output=embed"
               width="100%"
               height="320"
@@ -109,6 +123,13 @@ export default function ContactsPage() {
             />
           </div>
         </div>
+      </section>
+
+      <section className="mt-10">
+        <RelatedLinks
+          title="Перед первой встречей"
+          items={relatedSections.filter((item) => item.href !== "/contacts")}
+        />
       </section>
     </main>
   );

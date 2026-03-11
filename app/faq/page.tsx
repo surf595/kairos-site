@@ -1,3 +1,14 @@
+import { buildPageMetadata } from "../lib/seo";
+import { relatedSections } from "../lib/content";
+import RelatedLinks from "../components/related-links";
+
+export const metadata = buildPageMetadata({
+  title: "Вопросы и ответы",
+  description:
+    "Ответы на частые вопросы о первой встрече, формате психотерапии, конфиденциальности и правилах работы.",
+  path: "/faq",
+});
+
 const firstContactFaq = [
   {
     question: "Как проходит первая встреча с психологом?",
@@ -223,7 +234,7 @@ export default function FAQPage() {
       <section className="mx-auto max-w-5xl px-6 py-16 md:px-8 md:py-24">
         <header className="mb-14">
           <h1 className="text-5xl font-semibold tracking-tight text-neutral-900 md:text-6xl">
-            FAQ
+            Вопросы и ответы
           </h1>
           <p className="mt-4 max-w-2xl text-[18px] leading-8 text-neutral-700">
             Ответы на частые вопросы о начале терапии, формате работы,
@@ -247,6 +258,11 @@ export default function FAQPage() {
             вопрос напрямую.
           </p>
         </section>
+
+        <RelatedLinks
+          title="Другие важные страницы"
+          items={relatedSections.filter((item) => item.href !== "/faq")}
+        />
       </section>
     </main>
   )

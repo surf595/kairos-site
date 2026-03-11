@@ -15,9 +15,16 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Kairos Therapy — Психотерапия в Таллине",
+  metadataBase: new URL("https://kairos.ee"),
+  title: {
+    default: "Психотерапия в Таллине",
+    template: "%s",
+  },
   description:
     "Частная психотерапевтическая практика в Таллине. Индивидуальная работа для взрослых: очно и онлайн.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 const navItems = [
@@ -25,7 +32,7 @@ const navItems = [
   { href: "/about", label: "Обо мне" },
   { href: "/services", label: "С чем я работаю" },
   { href: "/format", label: "Формат работы" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/faq", label: "Вопросы и ответы" },
   { href: "/contacts", label: "Контакты" },
 ];
 
@@ -37,6 +44,12 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${inter.variable} ${cormorant.variable}`}>
       <body className="min-h-screen bg-[#F3EEE6] font-sans text-[#26231F] antialiased">
+        <a
+          href="#main-content"
+          className="skip-link"
+        >
+          Перейти к содержимому
+        </a>
         <div className="relative min-h-screen overflow-x-hidden">
           <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.55),transparent_32%),linear-gradient(180deg,#F5F1EA_0%,#F3EEE6_45%,#EFE7DC_100%)]" />
           <div className="pointer-events-none fixed inset-0 -z-10 opacity-[0.04] [background-image:radial-gradient(#000_0.7px,transparent_0.7px)] [background-size:8px_8px]" />
@@ -102,7 +115,7 @@ export default function RootLayout({
             </div>
           </header>
 
-          {children}
+          <div id="main-content">{children}</div>
 
           <footer className="border-t border-black/10 bg-[#ECE3D7]">
             <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 lg:px-12">
@@ -174,19 +187,19 @@ export default function RootLayout({
               </div>
 
               <div className="mt-12 flex flex-col gap-4 border-t border-black/8 pt-6 text-sm text-[#7B6F62] md:flex-row md:items-center md:justify-between">
-                <p>© {new Date().getFullYear()} Kairos Therapy OÜ</p>
+                <p>© {new Date().getFullYear()} Частная практика</p>
                 <div className="flex flex-wrap gap-5">
                   <Link
                     href="/privacy"
                     className="transition hover:text-[#312D28]"
                   >
-                    Privacy Policy
+                    Политика конфиденциальности
                   </Link>
                   <Link
                     href="/terms"
                     className="transition hover:text-[#312D28]"
                   >
-                    Terms & Conditions
+                    Условия использования
                   </Link>
                 </div>
               </div>
