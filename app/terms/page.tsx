@@ -1,4 +1,6 @@
 import Link from "next/link";
+import RelatedLinks from "../components/related-links";
+import { practiceInfo, relatedSections } from "../lib/content";
 import { buildPageMetadata } from "../lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -48,11 +50,11 @@ export default function TermsPage() {
               <br />
               Регистрационный номер: 17338080
               <br />
-              Адрес: Tatari 56, кабинет 308, Таллин, Эстония
+              Адрес: {practiceInfo.officeAddress}, Таллин, Эстония
               <br />
-              Email: info@kairos.ee
+              Email: {practiceInfo.contactEmail}
               <br />
-              Телефон: +372 509 3008
+              Телефон: {practiceInfo.contactPhone}
             </p>
           </Section>
 
@@ -79,8 +81,8 @@ export default function TermsPage() {
 
           <Section title="4. Стоимость услуг">
             <ul className="list-disc space-y-2 pl-6">
-              <li>индивидуальная сессия — 60 €;</li>
-              <li>групповая работа — 25 €.</li>
+              <li>индивидуальная сессия — {practiceInfo.individualPrice};</li>
+              <li>групповая работа — {practiceInfo.groupPrice}.</li>
             </ul>
           </Section>
 
@@ -116,8 +118,8 @@ export default function TermsPage() {
 
           <Section title="9. Изменение условий">
             <p>
-              Оператор практики может обновлять настоящие условия. Актуальная версия
-              всегда доступна на этой странице.
+              Оператор практики может обновлять настоящие условия. Актуальная
+              версия всегда доступна на этой странице.
             </p>
           </Section>
 
@@ -137,6 +139,13 @@ export default function TermsPage() {
             </Link>
           </span>
           и связаться удобным способом.
+        </div>
+
+        <div className="mt-10">
+          <RelatedLinks
+            title="Что ещё важно перед началом"
+            items={relatedSections.filter((item) => !["/terms", "/privacy"].includes(item.href))}
+          />
         </div>
       </div>
     </main>

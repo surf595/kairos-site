@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
+import RelatedLinks from "../components/related-links";
+import { practiceInfo, relatedSections } from "../lib/content";
 import { buildPageMetadata } from "../lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -9,50 +12,45 @@ export const metadata = buildPageMetadata({
 
 export default function AboutPage() {
   return (
-<main className="mx-auto w-full max-w-6xl space-y-16 px-6 py-12 md:space-y-20 md:px-10 md:py-16 lg:px-12">     <header className="grid items-start gap-12 md:grid-cols-[1.2fr_0.8fr]">
-  
-  <div className="space-y-6">
-    <h1 className="text-4xl font-medium md:text-5xl">Обо мне</h1>
+    <main className="mx-auto w-full max-w-6xl space-y-14 px-6 py-12 md:space-y-16 md:px-10 md:py-16 lg:px-12">
+      <header className="grid items-start gap-10 md:grid-cols-[1.15fr_0.85fr]">
+        <div className="space-y-6">
+          <h1 className="text-4xl font-medium tracking-tight md:text-5xl">Обо мне</h1>
 
-    <div className="space-y-5 text-lg leading-relaxed text-[#49504a]">
-      <p>
-        Я веду частную психотерапевтическую практику в Таллине. В центре
-        моей работы — внимательное и бережное исследование внутреннего
-        опыта человека: его переживаний, отношений и жизненных ситуаций.
-      </p>
+          <div className="space-y-5 text-lg leading-relaxed text-[#49504a]">
+            <p>
+              Я веду частную психотерапевтическую практику в Таллине. В центре
+              моей работы — внимательное и бережное исследование внутреннего
+              опыта человека: его переживаний, отношений и жизненных ситуаций.
+            </p>
+            <p>
+              Часто то, что вызывает тревогу и внутреннее напряжение, связано не
+              только с текущими обстоятельствами, но и с более глубокими
+              внутренними процессами — конфликтами и повторяющимися жизненными
+              сценариями.
+            </p>
+            <p>
+              Терапия создаёт пространство, где становится возможным остановиться,
+              прислушаться к себе и постепенно лучше понять то, что происходит
+              внутри.
+            </p>
+          </div>
+        </div>
 
-      <p>
-        Часто то, что вызывает тревогу, внутреннее напряжение или трудности
-        в жизни, оказывается связано не только с текущими обстоятельствами,
-        но и с более глубокими внутренними процессами — переживаниями,
-        конфликтами и повторяющимися жизненными сценариями.
-      </p>
-
-      <p>
-        Психотерапия создаёт пространство, где становится возможным
-        остановиться, прислушаться к себе и постепенно лучше понять эти
-        процессы.
-      </p>
-    </div>
-  </div>
-
-  <div className="w-full max-w-[420px] justify-self-end overflow-hidden rounded-2xl border border-[#2f3331]/15 shadow-sm">
-    <Image
-      src="/images/viktor.jpeg"
-      alt="Виктор — психолог и психотерапевт"
-      width={500}
-      height={620}
-      className="h-auto w-full object-cover"
-      priority
-    />
-  </div>
-
-</header>
+        <div className="w-full max-w-[420px] justify-self-end overflow-hidden rounded-2xl border border-[#2f3331]/15 shadow-sm">
+          <Image
+            src="/images/viktor.jpeg"
+            alt="Портрет психолога"
+            width={500}
+            height={620}
+            className="h-auto w-full object-cover"
+            priority
+          />
+        </div>
+      </header>
 
       <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Профессиональная позиция
-        </h2>
+        <h2 className="text-2xl font-medium md:text-3xl">Профессиональная позиция</h2>
         <div className="space-y-4 text-lg leading-relaxed text-[#49504a]">
           <p>
             В своей работе я опираюсь на экзистенциальное и психодинамическое
@@ -61,104 +59,67 @@ export default function AboutPage() {
           <p>
             Этот подход рассматривает психологические трудности не только как
             симптомы, которые необходимо устранить, но и как выражение
-            внутреннего опыта человека — его переживаний, отношений, жизненных
-            выборов и конфликтов.
+            внутреннего опыта — переживаний, отношений, жизненных выборов и
+            конфликтов.
           </p>
           <p>
-            Терапевтическая работа предполагает внимательное исследование этого
-            опыта. Через разговор, размышление и совместное исследование
-            постепенно становится возможным лучше понять собственные чувства,
-            способы реагирования и те жизненные сценарии, которые могут
-            повторяться в отношениях и жизненных ситуациях.
-          </p>
-          <p>
-            Важной частью процесса является создание пространства, в котором
-            человек может говорить о сложных или уязвимых переживаниях без
-            страха оценки. Такое пространство позволяет постепенно расширять
-            понимание себя и находить новые способы быть в отношениях с собой и
-            другими людьми.
+            Через разговор и совместное исследование постепенно становится
+            возможным лучше понять собственные чувства, способы реагирования и
+            те сценарии, которые повторяются в отношениях и жизненных ситуациях.
           </p>
         </div>
       </section>
 
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Образование и профессиональная подготовка
-        </h2>
-        <div className="space-y-4 text-lg leading-relaxed text-[#49504a]">
-          <p>
-            Я получил психологическое образование в Московском государственном
-            психолого-педагогическом университете (МГППУ) по специальности
-            «Психология».
-          </p>
-          <p className="text-sm text-[#737972]">
-            Документы об образовании подтверждены Министерством образования
-            Эстонии.
-          </p>
-          <p>
-            Моя профессиональная подготовка включает бакалавриат и магистратуру
-            по психологии.
-          </p>
-          <p>
-            Дополнительную подготовку в области экзистенциальной психотерапии,
-            групповой терапии и Daseinsanalyse я проходил в Институте
-            гуманистической и экзистенциальной психологии (HEPI), Литва.
-          </p>
+      <section className="grid gap-6 rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-7 md:grid-cols-2 md:p-8">
+        <div>
+          <h2 className="text-2xl font-medium md:text-3xl">Образование и подготовка</h2>
+          <div className="mt-4 space-y-3 text-[17px] leading-relaxed text-[#49504a]">
+            <p>
+              Психологическое образование: МГППУ, специальность «Психология».
+            </p>
+            <p>
+              Дополнительная подготовка в области экзистенциальной психотерапии,
+              групповой терапии и Daseinsanalyse.
+            </p>
+            <p className="text-sm text-[#737972]">
+              Документы об образовании подтверждены Министерством образования
+              Эстонии.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-medium md:text-3xl">Рамка работы</h2>
+          <div className="mt-4 space-y-3 text-[17px] leading-relaxed text-[#49504a]">
+            <p>Индивидуальные встречи для взрослых.</p>
+            <p>Длительность сессии — {practiceInfo.sessionDuration}.</p>
+            <p>Формат: очно ({practiceInfo.officeAddress}) и онлайн.</p>
+            <p>
+              Регулярность и устойчивость сеттинга помогают выстраивать
+              безопасное пространство для внутренних изменений.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Профессиональное развитие
-        </h2>
-        <p className="text-lg leading-relaxed text-[#49504a]">
-          Я продолжаю профессиональное развитие через участие в
-          профессиональных сообществах, дополнительное обучение, регулярную
-          супервизию и личную терапию, которые являются важной частью
-          профессиональной практики психотерапевта.
+      <section className="rounded-3xl border border-[#2f3331]/15 bg-[#2f3331] p-8 text-[#f6f2ea]">
+        <h2 className="text-2xl font-medium md:text-3xl">Запись на первую встречу</h2>
+        <p className="mt-3 max-w-3xl text-lg leading-relaxed text-[#ece7de]">
+          Если вы чувствуете, что хотите разобраться в происходящем, можно
+          сделать первый шаг в спокойном темпе.
         </p>
+        <Link
+          href="/contacts"
+          className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-[#f3eee6] px-6 text-sm font-medium text-[#26231f] transition hover:bg-[#fff]"
+        >
+          Перейти к контактам
+        </Link>
       </section>
 
-      <section className="space-y-5 rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-8">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Как проходит работа
-        </h2>
-        <div className="space-y-4 text-lg leading-relaxed text-[#49504a]">
-          <p>Работа проходит в формате регулярных индивидуальных встреч.</p>
-          <p>
-            Сессия длится 50 минут и проходит в заранее согласованное время.
-          </p>
-          <p>
-            Встречи могут проходить очно в кабинете в Таллине или онлайн через
-            видеосвязь.
-          </p>
-          <p>
-            Регулярность и устойчивость терапевтической рамки помогают создать
-            пространство, в котором возможно внимательное исследование
-            внутреннего опыта и постепенные изменения.
-          </p>
-        </div>
-      </section>
-
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">Кабинет</h2>
-        <p className="text-lg leading-relaxed text-[#49504a]">
-          Работа проходит в приватном кабинете в Таллине. Это спокойное и
-          защищённое пространство, где можно остановиться, прислушаться к себе и
-          постепенно выстраивать более ясное понимание своего внутреннего мира.
-        </p>
-      </section>
-
-      <section className="space-y-5 rounded-3xl border border-[#2f3331]/15 bg-[#2f3331] p-8 text-[#f6f2ea]">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Запись на консультацию
-        </h2>
-        <p className="text-lg leading-relaxed text-[#ece7de]">
-          Если вы чувствуете, что пришло время разобраться в том, что происходит
-          в вашей жизни, вы можете связаться со мной для записи на первую
-          консультацию.
-        </p>
-      </section>
+      <RelatedLinks
+        title="Что посмотреть дальше"
+        items={relatedSections.filter((item) => item.href !== "/about")}
+      />
     </main>
   );
 }

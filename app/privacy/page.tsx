@@ -1,4 +1,6 @@
 import Link from "next/link";
+import RelatedLinks from "../components/related-links";
+import { practiceInfo, relatedSections } from "../lib/content";
 import { buildPageMetadata } from "../lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -48,11 +50,11 @@ export default function PrivacyPage() {
               <br />
               Регистрационный номер: 17338080
               <br />
-              Адрес: Tatari 56, кабинет 308, Таллин, Эстония
+              Адрес: {practiceInfo.officeAddress}, Таллин, Эстония
               <br />
-              Email: info@kairos.ee
+              Email: {practiceInfo.contactEmail}
               <br />
-              Телефон: +372 509 3008
+              Телефон: {practiceInfo.contactPhone}
             </p>
           </Section>
 
@@ -119,7 +121,7 @@ export default function PrivacyPage() {
               <li>ограничение обработки;</li>
               <li>отзыв согласия на обработку.</li>
             </ul>
-            <p>По вопросам, связанным с данными: info@kairos.ee.</p>
+            <p>По вопросам обработки данных: {practiceInfo.contactEmail}.</p>
           </Section>
 
           <Section title="9. Безопасность данных">
@@ -144,7 +146,14 @@ export default function PrivacyPage() {
               страницу контактов
             </Link>
           </span>
-          или на info@kairos.ee.
+          или на {practiceInfo.contactEmail}.
+        </div>
+
+        <div className="mt-10">
+          <RelatedLinks
+            title="Что ещё важно перед началом"
+            items={relatedSections.filter((item) => !["/terms", "/privacy"].includes(item.href))}
+          />
         </div>
       </div>
     </main>
