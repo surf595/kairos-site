@@ -1,5 +1,7 @@
 import Link from "next/link";
+import RelatedLinks from "../components/related-links";
 import { buildPageMetadata } from "../lib/seo";
+import { relatedSections } from "../lib/content";
 
 export const metadata = buildPageMetadata({
   title: "С чем я работаю",
@@ -108,6 +110,13 @@ export default function ServicesPage() {
             Связаться и записаться
           </Link>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-16 md:px-10 md:pb-20 lg:px-12">
+        <RelatedLinks
+          title="Полезно посмотреть дальше"
+          items={relatedSections.filter((item) => item.href !== "/services")}
+        />
       </section>
     </main>
   );

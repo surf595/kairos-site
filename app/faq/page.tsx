@@ -1,4 +1,6 @@
 import { buildPageMetadata } from "../lib/seo";
+import { relatedSections } from "../lib/content";
+import RelatedLinks from "../components/related-links";
 
 export const metadata = buildPageMetadata({
   title: "Вопросы и ответы",
@@ -256,6 +258,11 @@ export default function FAQPage() {
             вопрос напрямую.
           </p>
         </section>
+
+        <RelatedLinks
+          title="Другие важные страницы"
+          items={relatedSections.filter((item) => item.href !== "/faq")}
+        />
       </section>
     </main>
   )

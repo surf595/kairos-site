@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import RelatedLinks from "./components/related-links";
+import { firstContactFlow, relatedSections } from "./lib/content";
 
 const themes = [
   "Тревога и внутреннее напряжение",
@@ -10,11 +12,7 @@ const themes = [
   "Ощущение, что с вами «что-то не так»",
 ];
 
-const firstStepItems = [
-  "Вы пишете в удобной форме: через сайт, email или телефон.",
-  "Я отвечаю и предлагаю возможные окна для первой встречи.",
-  "Мы выбираем подходящий формат: очно в Таллине или онлайн.",
-] as const;
+
 
 export default function HomePage() {
   return (
@@ -167,7 +165,7 @@ export default function HomePage() {
 
           <div className="rounded-[30px] border border-[#DACDBE] bg-[#F6F1EA]/90 p-6 md:p-8">
             <ol className="space-y-3 text-[16px] leading-7 text-[#4F4941]">
-              {firstStepItems.map((item, index) => (
+              {firstContactFlow.map((item, index) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#CCBCA7] text-xs font-medium text-[#6E5C49]">
                     {index + 1}
@@ -193,6 +191,14 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+
+      <section className="mx-auto max-w-7xl px-6 pb-16 md:px-10 md:pb-20 lg:px-12">
+        <RelatedLinks
+          title="Навигация по сайту"
+          items={relatedSections}
+        />
       </section>
     </main>
   );

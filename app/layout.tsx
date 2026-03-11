@@ -17,8 +17,8 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kairos.ee"),
   title: {
-    default: "Kairos Therapy — Психотерапия в Таллине",
-    template: "%s | Kairos Therapy",
+    default: "Психотерапия в Таллине",
+    template: "%s",
   },
   description:
     "Частная психотерапевтическая практика в Таллине. Индивидуальная работа для взрослых: очно и онлайн.",
@@ -187,7 +187,7 @@ export default function RootLayout({
               </div>
 
               <div className="mt-12 flex flex-col gap-4 border-t border-black/8 pt-6 text-sm text-[#7B6F62] md:flex-row md:items-center md:justify-between">
-                <p>© {new Date().getFullYear()} Kairos Therapy OÜ</p>
+                <p>© {new Date().getFullYear()} Частная практика</p>
                 <div className="flex flex-wrap gap-5">
                   <Link
                     href="/privacy"

@@ -1,5 +1,7 @@
 import Link from "next/link";
+import RelatedLinks from "../components/related-links";
 import { buildPageMetadata } from "../lib/seo";
+import { relatedSections, practiceInfo } from "../lib/content";
 
 export const metadata = buildPageMetadata({
   title: "Формат работы",
@@ -15,7 +17,7 @@ const items = [
   },
   {
     title: "Очно в Таллине",
-    text: "Tatari 56, кабинет 308.",
+    text: practiceInfo.officeAddress + ".",
   },
   {
     title: "Онлайн",
@@ -73,18 +75,18 @@ export default function FormatPage() {
               <div>
                 <p className="text-sm text-stone-500">Продолжительность</p>
                 <p className="mt-1 text-lg font-medium text-stone-900">
-                  50 минут
+                  {practiceInfo.sessionDuration}
                 </p>
               </div>
 
               <div>
                 <p className="text-sm text-stone-500">Индивидуальная сессия</p>
-                <p className="mt-1 text-lg font-medium text-stone-900">60 €</p>
+                <p className="mt-1 text-lg font-medium text-stone-900">{practiceInfo.individualPrice}</p>
               </div>
 
               <div>
                 <p className="text-sm text-stone-500">Групповая терапия</p>
-                <p className="mt-1 text-lg font-medium text-stone-900">25 €</p>
+                <p className="mt-1 text-lg font-medium text-stone-900">{practiceInfo.groupPrice}</p>
               </div>
             </div>
           </div>
@@ -105,6 +107,13 @@ export default function FormatPage() {
             Перейти к контактам
           </Link>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16 md:px-10 md:pb-20 lg:px-12">
+        <RelatedLinks
+          title="Связанные разделы"
+          items={relatedSections.filter((item) => item.href !== "/format")}
+        />
       </section>
     </main>
   );

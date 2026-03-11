@@ -1,4 +1,6 @@
 import { buildPageMetadata } from "../lib/seo";
+import { firstContactFlow, practiceInfo, relatedSections } from "../lib/content";
+import RelatedLinks from "../components/related-links";
 import ContactForm from "./contact-form";
 
 export const metadata = buildPageMetadata({
@@ -21,7 +23,7 @@ export default function ContactsPage() {
         </p>
 
         <p className="mt-3 text-sm leading-relaxed text-[#6a706a]">
-          Обычно я отвечаю в течение 24–48 часов. Ваше обращение остаётся
+          Обычно я отвечаю в течение {practiceInfo.responseTime}. Ваше обращение остаётся
           конфиденциальным.
         </p>
       </section>
@@ -38,9 +40,9 @@ export default function ContactsPage() {
           </p>
 
           <ol className="mt-4 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-[#6a706a]">
-            <li>Вы оставляете короткое сообщение.</li>
-            <li>Я возвращаюсь к вам и предлагаю возможные окна для встречи.</li>
-            <li>Мы согласуем удобный формат: очно или онлайн.</li>
+            {firstContactFlow.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
           </ol>
 
           <ContactForm />
@@ -58,7 +60,7 @@ export default function ContactsPage() {
                   Телефон
                 </h3>
                 <a href="tel:+3725093008" className="hover:underline">
-                  +372 509 3008
+                  {practiceInfo.contactPhone}
                 </a>
               </div>
 
@@ -66,8 +68,8 @@ export default function ContactsPage() {
                 <h3 className="mb-1 text-base font-medium text-[#2f3331]">
                   Email
                 </h3>
-                <a href="mailto:info@kairos.ee" className="hover:underline">
-                  info@kairos.ee
+                <a href={`mailto:${practiceInfo.contactEmail}`} className="hover:underline">
+                  {practiceInfo.contactEmail}
                 </a>
               </div>
 
@@ -76,7 +78,7 @@ export default function ContactsPage() {
                   Адрес кабинета
                 </h3>
                 <p>
-                  Татари 56, кабинет 308
+                  {practiceInfo.officeAddress}
                   <br />
                   Таллин, Эстония
                 </p>
@@ -121,6 +123,13 @@ export default function ContactsPage() {
             />
           </div>
         </div>
+      </section>
+
+      <section className="mt-10">
+        <RelatedLinks
+          title="Перед первой встречей"
+          items={relatedSections.filter((item) => item.href !== "/contacts")}
+        />
       </section>
     </main>
   );
