@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import MobileHeader from "./mobile-header";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -41,7 +42,9 @@ export default function RootLayout({
           <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.55),transparent_32%),linear-gradient(180deg,#F5F1EA_0%,#F3EEE6_45%,#EFE7DC_100%)]" />
           <div className="pointer-events-none fixed inset-0 -z-10 opacity-[0.04] [background-image:radial-gradient(#000_0.7px,transparent_0.7px)] [background-size:8px_8px]" />
 
-          <header className="sticky top-0 z-50 border-b border-black/8 bg-[#F3EEE6]/88 backdrop-blur-xl">
+          <MobileHeader />
+
+          <header className="sticky top-0 z-50 hidden border-b border-black/8 bg-[#F3EEE6]/88 backdrop-blur-xl lg:block">
             <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 md:px-10 lg:px-12">
               <Link href="/" className="group flex items-center gap-4">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C5B5] bg-[#F8F4EE] text-[#6E5C49] shadow-[0_8px_24px_rgba(92,72,46,0.06)] transition group-hover:-translate-y-0.5">
@@ -86,27 +89,13 @@ export default function RootLayout({
                 </Link>
               </div>
             </div>
-
-            <div className="border-t border-black/5 lg:hidden">
-              <div className="mx-auto flex max-w-7xl gap-5 overflow-x-auto px-6 py-3 text-sm text-[#5E564D] md:px-10">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="whitespace-nowrap transition hover:text-[#1F1C18]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
           </header>
 
           {children}
 
           <footer className="border-t border-black/10 bg-[#ECE3D7]">
             <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 lg:px-12">
-              <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr_0.9fr]">
+              <div className="grid gap-10 md:gap-12 lg:grid-cols-[1.1fr_0.9fr_0.9fr]">
                 <div>
                   <div className="font-serif text-3xl font-semibold text-[#1F1C18]">
                     Kairos Therapy
@@ -122,7 +111,7 @@ export default function RootLayout({
                   <div className="text-xs uppercase tracking-[0.22em] text-[#8A7D6E]">
                     Разделы
                   </div>
-                  <div className="mt-5 grid gap-3 text-[15px] text-[#5D554C]">
+                  <div className="mt-5 grid gap-4 text-[15px] leading-7 text-[#5D554C]">
                     <Link href="/" className="transition hover:text-[#1F1C18]">
                       Главная
                     </Link>
@@ -163,10 +152,9 @@ export default function RootLayout({
                   <div className="text-xs uppercase tracking-[0.22em] text-[#8A7D6E]">
                     Информация
                   </div>
-                  <div className="mt-5 space-y-3 text-[15px] leading-7 text-[#5D554C]">
-                    <p>Очная и онлайн работа</p>
-                    <p>Индивидуальные сессии для взрослых</p>
+                  <div className="mt-5 space-y-4 text-[15px] leading-7 text-[#5D554C]">
                     <p>Таллин, Tatari 56, кабинет 308</p>
+                    <p>reg. nr. 17338080</p>
                     <p>info@kairos.ee</p>
                     <p>+372 509 3008</p>
                   </div>
