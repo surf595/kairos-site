@@ -100,7 +100,7 @@ export default function AboutPage() {
             <div className="absolute -left-6 top-8 hidden h-[72%] w-24 rounded-[2rem] bg-[var(--bg-soft)] md:block" />
             <div className="relative overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
               <Image
-                src="/images/viktor-about.jpg"
+                src="/images/viktor.jpeg"
                 alt="Виктор — психолог и психотерапевт"
                 width={960}
                 height={1200}
