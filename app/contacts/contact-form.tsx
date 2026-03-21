@@ -93,7 +93,7 @@ export default function ContactForm() {
       />
 
       <div>
-        <label htmlFor="name" className="mb-1 block text-sm text-[#49504a]">
+        <label htmlFor="name" className="field-label">
           Имя
         </label>
         <input
@@ -103,12 +103,12 @@ export default function ContactForm() {
           minLength={2}
           maxLength={100}
           autoComplete="name"
-          className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+          className="field-input"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm text-[#49504a]">
+        <label htmlFor="email" className="field-label">
           Email
         </label>
         <input
@@ -118,12 +118,12 @@ export default function ContactForm() {
           required
           maxLength={150}
           autoComplete="email"
-          className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+          className="field-input"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm text-[#49504a]">
+        <label htmlFor="message" className="field-label">
           Сообщение
         </label>
         <textarea
@@ -133,28 +133,20 @@ export default function ContactForm() {
           required
           minLength={10}
           maxLength={3000}
-          className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
+          className="field-input"
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="rounded-xl bg-[#2f3331] px-6 py-3 text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-      >
+      <button type="submit" disabled={isSubmitting} className="btn-primary disabled:opacity-60">
         {isSubmitting ? "Отправка..." : "Отправить сообщение"}
       </button>
 
       {status.type === "success" && (
-        <p className="text-sm leading-relaxed text-green-700">
-          {status.message}
-        </p>
+        <p className="text-sm leading-relaxed text-emerald-800">{status.message}</p>
       )}
 
       {status.type === "error" && (
-        <p className="text-sm leading-relaxed text-red-700">
-          {status.message}
-        </p>
+        <p className="text-sm leading-relaxed text-rose-800">{status.message}</p>
       )}
     </form>
   );

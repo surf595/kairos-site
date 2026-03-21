@@ -173,17 +173,17 @@ function FaqItem({
   answer: string
 }) {
   return (
-    <details className="group rounded-2xl border border-black/10 bg-white/40 transition">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-left text-[22px] font-medium text-neutral-800 marker:hidden [&::-webkit-details-marker]:hidden">
+    <details className="group surface-card rounded-[22px] transition">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-left text-[1.3rem] font-medium text-[var(--ink-main)] marker:hidden [&::-webkit-details-marker]:hidden">
         <span>{question}</span>
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/10 text-xl leading-none text-neutral-600 transition group-open:rotate-180">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border-soft)] text-xl leading-none text-[var(--ink-muted)] transition group-open:rotate-180">
           <span className="group-open:hidden">+</span>
           <span className="hidden group-open:inline">−</span>
         </span>
       </summary>
 
-      <div className="border-t border-black/8 px-6 pb-6 pt-4">
-        <p className="max-w-none text-[17px] leading-8 text-neutral-700">
+      <div className="border-t border-[var(--border-soft)] px-6 pb-6 pt-4">
+        <p className="max-w-none text-[1.02rem] leading-8 text-[var(--ink-soft)]">
           {answer}
         </p>
       </div>
@@ -200,7 +200,7 @@ function FaqSection({
 }) {
   return (
     <section className="mb-14">
-      <h2 className="mb-6 text-3xl font-semibold tracking-tight text-neutral-900">
+      <h2 className="mb-6 font-serif text-[2.05rem] font-semibold tracking-[-0.02em] text-[var(--ink-main)]">
         {title}
       </h2>
 
@@ -219,13 +219,13 @@ function FaqSection({
 
 export default function FAQPage() {
   return (
-    <main className="bg-[#f5f1e8] text-neutral-900">
-      <section className="mx-auto max-w-5xl px-6 py-16 md:px-8 md:py-24">
+    <main className="page-shell text-[var(--ink-main)]">
+      <section className="section-wrap max-w-5xl">
         <header className="mb-14">
-          <h1 className="text-5xl font-semibold tracking-tight text-neutral-900 md:text-6xl">
+          <h1 className="title-hero">
             FAQ
           </h1>
-          <p className="mt-4 max-w-2xl text-[18px] leading-8 text-neutral-700">
+          <p className="lead mt-4">
             Ответы на частые вопросы о начале терапии, формате работы,
             конфиденциальности и группах.
           </p>
@@ -238,11 +238,11 @@ export default function FAQPage() {
         <FaqSection title="С какими вопросами обращаются" items={issuesFaq} />
         <FaqSection title="Групповая работа" items={groupFaq} />
 
-        <section className="mt-20 rounded-3xl border border-black/10 bg-white/50 px-8 py-10">
-          <h2 className="text-2xl font-semibold text-neutral-900">
+        <section className="surface-elevated mt-20 rounded-[30px] px-8 py-10">
+          <h2 className="font-serif text-[2rem] font-semibold text-[var(--ink-main)]">
             Не нашли ответ на свой вопрос?
           </h2>
-          <p className="mt-3 max-w-2xl text-[17px] leading-8 text-neutral-700">
+          <p className="mt-3 max-w-2xl text-[1.03rem] leading-8 text-[var(--ink-soft)]">
             Вы можете связаться со мной через страницу контактов и задать свой
             вопрос напрямую.
           </p>

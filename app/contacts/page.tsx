@@ -1,112 +1,48 @@
-import type { Metadata } from "next";
 import ContactForm from "./contact-form";
-
-export const metadata: Metadata = {
-  title: "Контакты — Kairos Therapy",
-  description: "Контакты психотерапевтической практики Kairos Therapy в Таллине.",
-};
 
 export default function ContactsPage() {
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 py-8 md:px-10 md:py-10">
-      <section className="mb-6 max-w-2xl">
-        <h1 className="text-4xl font-medium tracking-tight md:text-5xl">
-          Контакты
-        </h1>
-
-        <p className="mt-4 text-lg leading-relaxed text-[#49504a]">
-          Вы можете написать через форму обратной связи или связаться со мной
-          напрямую. Приём осуществляется по предварительной записи.
+    <main className="page-shell">
+      <section className="section-wrap pb-10">
+        <p className="eyebrow">Контакты</p>
+        <h1 className="title-hero mt-4">Свяжитесь со мной</h1>
+        <p className="lead mt-6">
+          Если вы хотите записаться на первую встречу или задать вопрос о
+          формате работы, оставьте сообщение через форму.
         </p>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-        <div className="rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-6 md:p-8">
-          <h2 className="text-2xl font-medium md:text-3xl">
-            Форма обратной связи
-          </h2>
-
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#737972]">
-            Вы можете кратко описать ваш вопрос или ситуацию. Я постараюсь
-            ответить в ближайшее время.
-          </p>
-
-          <ContactForm />
-        </div>
-
-        <div className="space-y-6">
-          <div className="rounded-3xl border border-[#2f3331]/15 bg-white p-6 md:p-8">
-            <h2 className="text-2xl font-medium md:text-3xl">
-              Контактная информация
+      <section className="section-wrap pt-6">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="surface-elevated p-6 md:p-8">
+            <h2 className="font-serif text-[2rem] font-semibold text-[var(--ink-main)]">
+              Форма обращения
             </h2>
-
-            <div className="mt-6 space-y-5 text-[#49504a]">
-              <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
-                  Телефон
-                </h3>
-                <a href="tel:+3725093008" className="hover:underline">
-                  +372 509 3008
-                </a>
-              </div>
-
-              <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
-                  Email
-                </h3>
-                <a href="mailto:info@kairos.ee" className="hover:underline">
-                  info@kairos.ee
-                </a>
-              </div>
-
-              <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
-                  Адрес кабинета
-                </h3>
-                <p>
-                  Татари 56, кабинет 308
-                  <br />
-                  Таллин, Эстония
-                </p>
-              </div>
-
-              <div>
-                <h3 className="mb-1 text-base font-medium text-[#2f3331]">
-                  Часы приёма
-                </h3>
-                <p>
-                  Понедельник — 09:00–19:00
-                  <br />
-                  Вторник — 09:00–19:00
-                  <br />
-                  Среда — 09:00–14:00
-                  <br />
-                  Четверг — 09:00–19:00
-                  <br />
-                  Пятница — 09:00–19:00
-                  <br />
-                  Суббота — 09:00–15:00
-                  <br />
-                  Воскресенье — выходной
-                </p>
-              </div>
-
-              <div className="pt-2 text-sm text-[#737972]">
-                <p>Kairos Therapy OÜ</p>
-                <p>Reg. nr. 17338080</p>
-              </div>
-            </div>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-[var(--ink-muted)]">
+              Обычно я отвечаю в течение 1–2 рабочих дней.
+            </p>
+            <ContactForm />
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-[#2f3331]/15 bg-white">
-            <iframe
-              title="Карта Kairos Therapy"
-              src="https://www.google.com/maps?q=Tatari+56+Tallinn&output=embed"
-              width="100%"
-              height="320"
-              loading="lazy"
-              className="block"
-            />
+          <div className="surface-card p-6 md:p-8">
+            <h2 className="font-serif text-[1.9rem] font-semibold text-[var(--ink-main)]">
+              Контактная информация
+            </h2>
+            <div className="mt-6 space-y-5 text-[var(--ink-soft)]">
+              <p>
+                <strong className="font-medium text-[var(--ink-main)]">Адрес:</strong> Tatari 56,
+                кабинет 308, Tallinn
+              </p>
+              <p>
+                <strong className="font-medium text-[var(--ink-main)]">Телефон:</strong> +372 509 3008
+              </p>
+              <p>
+                <strong className="font-medium text-[var(--ink-main)]">Email:</strong> info@kairos.ee
+              </p>
+              <p>
+                <strong className="font-medium text-[var(--ink-main)]">Формат:</strong> очно и онлайн
+              </p>
+            </div>
           </div>
         </div>
       </section>

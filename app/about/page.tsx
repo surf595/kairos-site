@@ -1,162 +1,71 @@
-import type { Metadata } from "next";
 import Image from "next/image";
-
-export const metadata: Metadata = {
-  title: "Обо мне — Kairos",
-  description: "О практике, профессиональной позиции, образовании и формате работы.",
-};
 
 export default function AboutPage() {
   return (
-<main className="mx-auto w-full max-w-6xl space-y-16 px-6 py-12 md:space-y-20 md:px-10 md:py-16 lg:px-12">     <header className="grid items-start gap-12 md:grid-cols-[1.2fr_0.8fr]">
-  
-  <div className="space-y-6">
-    <h1 className="text-4xl font-medium md:text-5xl">Обо мне</h1>
-
-    <div className="space-y-5 text-lg leading-relaxed text-[#49504a]">
-      <p>
-        Я веду частную психотерапевтическую практику в Таллине. В центре
-        моей работы — внимательное и бережное исследование внутреннего
-        опыта человека: его переживаний, отношений и жизненных ситуаций.
-      </p>
-
-      <p>
-        Часто то, что вызывает тревогу, внутреннее напряжение или трудности
-        в жизни, оказывается связано не только с текущими обстоятельствами,
-        но и с более глубокими внутренними процессами — переживаниями,
-        конфликтами и повторяющимися жизненными сценариями.
-      </p>
-
-      <p>
-        Психотерапия создаёт пространство, где становится возможным
-        остановиться, прислушаться к себе и постепенно лучше понять эти
-        процессы.
-      </p>
-    </div>
-  </div>
-
-  <div className="w-full max-w-[420px] justify-self-end overflow-hidden rounded-2xl border border-[#2f3331]/15 shadow-sm">
-    <Image
-      src="/images/viktor.jpeg"
-      alt="Виктор — психолог и психотерапевт"
-      width={500}
-      height={620}
-      className="h-auto w-full object-cover"
-      priority
-    />
-  </div>
-
-</header>
-
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Профессиональная позиция
-        </h2>
-        <div className="space-y-4 text-lg leading-relaxed text-[#49504a]">
-          <p>
-            В своей работе я опираюсь на экзистенциальное и психодинамическое
-            понимание психики.
-          </p>
-          <p>
-            Этот подход рассматривает психологические трудности не только как
-            симптомы, которые необходимо устранить, но и как выражение
-            внутреннего опыта человека — его переживаний, отношений, жизненных
-            выборов и конфликтов.
-          </p>
-          <p>
-            Терапевтическая работа предполагает внимательное исследование этого
-            опыта. Через разговор, размышление и совместное исследование
-            постепенно становится возможным лучше понять собственные чувства,
-            способы реагирования и те жизненные сценарии, которые могут
-            повторяться в отношениях и жизненных ситуациях.
-          </p>
-          <p>
-            Важной частью процесса является создание пространства, в котором
-            человек может говорить о сложных или уязвимых переживаниях без
-            страха оценки. Такое пространство позволяет постепенно расширять
-            понимание себя и находить новые способы быть в отношениях с собой и
-            другими людьми.
-          </p>
-        </div>
-      </section>
-
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Образование и профессиональная подготовка
-        </h2>
-        <div className="space-y-4 text-lg leading-relaxed text-[#49504a]">
-          <p>
-            Я получил психологическое образование в Московском государственном
-            психолого-педагогическом университете (МГППУ) по специальности
-            «Психология».
-          </p>
-          <p className="text-sm text-[#737972]">
-            Документы об образовании подтверждены Министерством образования
-            Эстонии.
-          </p>
-          <p>
-            Моя профессиональная подготовка включает бакалавриат и магистратуру
-            по психологии.
-          </p>
-          <p>
-            Дополнительную подготовку в области экзистенциальной психотерапии,
-            групповой терапии и Daseinsanalyse я проходил в Институте
-            гуманистической и экзистенциальной психологии (HEPI), Литва.
-          </p>
-        </div>
-      </section>
-
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Профессиональное развитие
-        </h2>
-        <p className="text-lg leading-relaxed text-[#49504a]">
-          Я продолжаю профессиональное развитие через участие в
-          профессиональных сообществах, дополнительное обучение, регулярную
-          супервизию и личную терапию, которые являются важной частью
-          профессиональной практики психотерапевта.
+    <main className="page-shell">
+      <section className="section-wrap pb-10">
+        <p className="eyebrow">Обо мне</p>
+        <h1 className="title-hero mt-4">Психотерапевтическая практика как пространство встречи</h1>
+        <p className="lead mt-6">
+          Я работаю со взрослыми в психоаналитически ориентированном подходе. В
+          центре моей практики — внимательный диалог, устойчивые границы и
+          уважение к индивидуальному ритму человека.
         </p>
       </section>
 
-      <section className="space-y-5 rounded-3xl border border-[#2f3331]/15 bg-[#f8f4ed]/75 p-8">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Как проходит работа
-        </h2>
-        <div className="space-y-4 text-lg leading-relaxed text-[#49504a]">
-          <p>Работа проходит в формате регулярных индивидуальных встреч.</p>
-          <p>
-            Сессия длится 50 минут и проходит в заранее согласованное время.
-          </p>
-          <p>
-            Встречи могут проходить очно в кабинете в Таллине или онлайн через
-            видеосвязь.
-          </p>
-          <p>
-            Регулярность и устойчивость терапевтической рамки помогают создать
-            пространство, в котором возможно внимательное исследование
-            внутреннего опыта и постепенные изменения.
-          </p>
+      <section className="section-wrap pt-8">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <article className="surface-card p-7 md:p-9">
+            <h2 className="title-section text-[2rem] md:text-[2.35rem]">Подход в работе</h2>
+            <div className="mt-6 space-y-4 text-[1.03rem] leading-8 text-[var(--ink-soft)]">
+              <p>
+                Терапия для меня — это не набор быстрых техник, а процесс, в
+                котором постепенно появляется больше ясности, устойчивости и
+                внутренней свободы.
+              </p>
+              <p>
+                Мы исследуем повторяющиеся переживания и отношения, которые
+                формируют ваш текущий опыт. Темп работы всегда соотносится с
+                вашими возможностями и задачами.
+              </p>
+            </div>
+          </article>
+
+          <div className="surface-elevated overflow-hidden p-3 md:p-4">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
+              <Image
+                src="/images/cabin/cabin.jpeg"
+                alt="Кабинет психотерапевтической практики"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium md:text-3xl">Кабинет</h2>
-        <p className="text-lg leading-relaxed text-[#49504a]">
-          Работа проходит в приватном кабинете в Таллине. Это спокойное и
-          защищённое пространство, где можно остановиться, прислушаться к себе и
-          постепенно выстраивать более ясное понимание своего внутреннего мира.
-        </p>
-      </section>
-
-      <section className="space-y-5 rounded-3xl border border-[#2f3331]/15 bg-[#2f3331] p-8 text-[#f6f2ea]">
-        <h2 className="text-2xl font-medium md:text-3xl">
-          Запись на консультацию
-        </h2>
-        <p className="text-lg leading-relaxed text-[#ece7de]">
-          Если вы чувствуете, что пришло время разобраться в том, что происходит
-          в вашей жизни, вы можете связаться со мной для записи на первую
-          консультацию.
-        </p>
+      <section className="section-wrap pt-2">
+        <div className="grid gap-6 md:grid-cols-2">
+          <article className="surface-card p-7 md:p-8">
+            <h3 className="font-serif text-[1.9rem] font-semibold tracking-[-0.02em] text-[var(--ink-main)]">
+              Образование и развитие
+            </h3>
+            <p className="mt-4 text-[1.02rem] leading-8 text-[var(--ink-soft)]">
+              Я продолжаю профессиональную подготовку и регулярную супервизию,
+              чтобы сохранять качество и этичность практики.
+            </p>
+          </article>
+          <article className="surface-card p-7 md:p-8">
+            <h3 className="font-serif text-[1.9rem] font-semibold tracking-[-0.02em] text-[var(--ink-main)]">
+              Этика и границы
+            </h3>
+            <p className="mt-4 text-[1.02rem] leading-8 text-[var(--ink-soft)]">
+              Конфиденциальность, уважение к автономии и внимательное отношение к
+              границам остаются базой всей совместной работы.
+            </p>
+          </article>
+        </div>
       </section>
     </main>
   );

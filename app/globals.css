@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --bg-main: #f3eee6;
-  --bg-soft: #f7f2ec;
-  --bg-panel: #fbf8f3;
-  --bg-deep: #ece3d7;
+  --bg-main: #f4eee5;
+  --bg-soft: #f8f2ea;
+  --bg-panel: #fcf8f1;
+  --bg-deep: #ebe1d4;
+  --bg-ink: #211d19;
 
-  --ink-main: #1f1c18;
-  --ink-soft: #5e564d;
-  --ink-muted: #8a7e70;
+  --ink-main: #201c18;
+  --ink-soft: #595248;
+  --ink-muted: #857a6d;
 
-  --accent-warm: #9c7c5d;
-  --accent-soft: #cbbdad;
-  --accent-line: #d7ccbe;
+  --accent-warm: #8e6f52;
+  --accent-soft: #cabca9;
+  --accent-line: #d8ccbd;
 
-  --border-soft: rgba(38, 35, 31, 0.1);
-  --border-strong: rgba(38, 35, 31, 0.16);
+  --border-soft: rgba(37, 33, 28, 0.12);
+  --border-strong: rgba(37, 33, 28, 0.22);
 
-  --shadow-soft: 0 14px 40px rgba(92, 72, 46, 0.05);
-  --shadow-medium: 0 20px 60px rgba(92, 72, 46, 0.08);
-  --shadow-deep: 0 34px 90px rgba(70, 52, 30, 0.12);
+  --shadow-soft: 0 12px 30px rgba(85, 66, 43, 0.06);
+  --shadow-medium: 0 18px 46px rgba(85, 66, 43, 0.09);
+  --shadow-deep: 0 30px 80px rgba(64, 49, 31, 0.14);
 
   --radius-sm: 16px;
   --radius-md: 24px;
@@ -28,6 +29,11 @@
 
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
   --container: 1240px;
+
+  --space-section-y: clamp(4rem, 7vw, 7rem);
+  --space-stack-sm: 0.9rem;
+  --space-stack-md: 1.4rem;
+  --space-stack-lg: 2rem;
 }
 
 *,
@@ -60,7 +66,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.026;
   background-image:
     radial-gradient(rgba(31, 28, 24, 0.95) 0.6px, transparent 0.6px);
   background-size: 8px 8px;
@@ -77,11 +83,11 @@ h4,
 }
 
 h1 {
-  line-height: 0.92;
+  line-height: 0.95;
 }
 
 h2 {
-  line-height: 0.98;
+  line-height: 1.03;
 }
 
 p {
@@ -98,6 +104,193 @@ a {
     transform 0.26s var(--ease-premium),
     box-shadow 0.26s var(--ease-premium),
     background-color 0.26s var(--ease-premium);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(142, 111, 82, 0.65);
+  outline-offset: 2px;
+}
+
+.page-shell {
+  background: linear-gradient(180deg, #f5f1ea 0%, var(--bg-main) 46%, #eee6db 100%);
+  color: var(--ink-main);
+}
+
+.section-wrap {
+  margin-inline: auto;
+  max-width: var(--container);
+  padding-inline: clamp(1.25rem, 3.3vw, 3rem);
+  padding-block: var(--space-section-y);
+}
+
+.eyebrow {
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.title-hero {
+  max-width: 16ch;
+  font-size: clamp(2.35rem, 6vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.032em;
+}
+
+.title-section {
+  max-width: 18ch;
+  font-size: clamp(2rem, 4.1vw, 3.25rem);
+  line-height: 1.03;
+  letter-spacing: -0.028em;
+}
+
+.lead {
+  max-width: 66ch;
+  font-size: clamp(1.04rem, 2.2vw, 1.22rem);
+  line-height: 1.72;
+  color: var(--ink-soft);
+}
+
+.body-muted {
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+.surface-card {
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(247, 241, 232, 0.84));
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.surface-elevated {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.64), rgba(243, 235, 224, 0.9));
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 999px;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1.25rem;
+  font-size: 0.93rem;
+  font-weight: 500;
+  transition:
+    transform 0.28s var(--ease-premium),
+    background-color 0.28s var(--ease-premium),
+    border-color 0.28s var(--ease-premium),
+    color 0.28s var(--ease-premium),
+    box-shadow 0.28s var(--ease-premium);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #1f1b17 0%, #2a251f 100%);
+  color: #f8f3ec;
+  box-shadow: 0 12px 28px rgba(26, 24, 21, 0.18);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #28231e 0%, #332d27 100%);
+}
+
+.btn-secondary {
+  border: 1px solid var(--accent-soft);
+  background: rgba(252, 248, 241, 0.85);
+  color: var(--ink-main);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  border-color: #baa88f;
+  background: rgba(255, 252, 248, 0.95);
+}
+
+.field-label {
+  margin-bottom: 0.45rem;
+  display: block;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.field-input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.76);
+  padding: 0.78rem 0.92rem;
+  color: var(--ink-main);
+  outline: none;
+  transition: border-color 0.26s var(--ease-premium), box-shadow 0.26s var(--ease-premium);
+}
+
+.field-input:focus {
+  border-color: rgba(142, 111, 82, 0.58);
+  box-shadow: 0 0 0 3px rgba(142, 111, 82, 0.14);
+}
+
+.hero-stage {
+  background: #e9dfd2;
+}
+
+.hero-media {
+  animation: heroPresence 16s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.hero-vignette {
+  background:
+    linear-gradient(110deg, rgba(17, 15, 13, 0.64) 6%, rgba(17, 15, 13, 0.43) 45%, rgba(17, 15, 13, 0.28) 70%, rgba(17, 15, 13, 0.16) 100%),
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), transparent 40%);
+}
+
+.hero-brand {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(2.4rem, 6.4vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #f8f2ea;
+}
+
+.hero-headline {
+  margin-top: 0.85rem;
+  max-width: 18ch;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(1.65rem, 3.8vw, 3.05rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #f6eee4;
+}
+
+.hero-support {
+  margin-top: 1.4rem;
+  max-width: 60ch;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.75;
+  color: rgba(246, 238, 228, 0.9);
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: revealUp 700ms var(--ease-premium) forwards;
+}
+
+.reveal-delay-1 {
+  animation-delay: 110ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 220ms;
+}
+
+.reveal-delay-3 {
+  animation-delay: 330ms;
 }
 
 img {
@@ -285,6 +478,22 @@ img {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroPresence {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.08);
   }
 }
 
