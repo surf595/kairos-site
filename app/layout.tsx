@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 const navItems = [
   { href: "/", label: "Главная" },
-  { href: "/services", label: "С чем я работаю" },
+  { href: "/s-chem-ya-rabotayu", label: "С чем я работаю" },
   { href: "/faq", label: "FAQ" },
   { href: "/about", label: "Обо мне" },
   { href: "/contacts", label: "Контакты" },
@@ -115,7 +115,7 @@ export default function RootLayout({
                       Главная
                     </Link>
                     <Link
-                      href="/services"
+                      href="/s-chem-ya-rabotayu"
                       className="transition hover:text-[#1F1C18]"
                     >
                       С чем я работаю

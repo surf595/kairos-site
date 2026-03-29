@@ -7,29 +7,28 @@ export default function TopicsPreview() {
   return (
     <section className="border-y border-black/10 bg-[#F1EBE2]">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-           <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
-  Направления работы
-</p>
-
-<h2 className="mt-4 max-w-[10ch] font-serif text-4xl leading-[1.08] text-[#2F2A26] sm:text-5xl">
-  С чем я работаю
-</h2>
-
-<p className="mt-8 max-w-md text-lg leading-8 text-[#6A6258]">
-  На терапии не всегда сразу понятно, как назвать то, что происходит.
-  Ниже — основные темы, с которыми люди чаще всего приходят в работу.
-</p>
-
-            <Link
-              href="/s-chem-ya-rabotayu"
-              className="inline-flex items-center gap-2 rounded-full border border-[#CFC3B4] bg-[#F7F2EB]/80 px-6 py-3 text-sm font-medium text-[#2E4443] transition hover:border-[#BCA993] hover:bg-[#FBF7F1]"
-            >
-              Все направления
-              <span aria-hidden="true">→</span>
-            </Link>
+            <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
+              Направления работы
+            </p>
+            <h2 className="mt-4 max-w-[10ch] font-serif text-4xl leading-[1.08] text-[#2F2A26] sm:text-5xl">
+              С чем я работаю
+            </h2>
+            <p className="mt-6 max-w-md text-lg leading-8 text-[#6A6258]">
+              На терапии не всегда сразу понятно, как назвать то, что
+              происходит. Ниже — основные темы, с которыми люди чаще всего
+              приходят в работу.
+            </p>
           </div>
+
+          <Link
+            href="/s-chem-ya-rabotayu"
+            className="inline-flex items-center gap-2 self-start rounded-full border border-[#CFC3B4] bg-[#F7F2EB]/80 px-6 py-3 text-sm font-medium text-[#2E4443] transition hover:border-[#BCA993] hover:bg-[#FBF7F1] lg:self-auto"
+          >
+            Все направления
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -41,13 +40,11 @@ export default function TopicsPreview() {
             >
               <div>
                 <h3 className="font-serif text-[2rem] leading-[1.15] text-[#2F2A26]">
-                       {topic.title}
-                          </h3>
-                          <p className="mt-3 text-base leading-8 text-[#6A6258]">
-                                {topic.short}
-                                  </p>
-                                  <div className="shrink-0 text-sm font-medium text-[#5F584F]"></div>
-  Подробнее →
+                  {topic.title}
+                </h3>
+                <p className="mt-3 text-base leading-8 text-[#6A6258]">
+                  {topic.short}
+                </p>
               </div>
 
               <div className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-[#2E4443]">
