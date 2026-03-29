@@ -1,3 +1,15 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Формат работы — Kairos Therapy",
+  description:
+    "Индивидуальные сессии 50 минут, очно в Таллине или онлайн. Стоимость: 60 € за сессию. Групповая терапия — 25 €.",
+  alternates: {
+    canonical: "/format",
+  },
+};
+
 export default function FormatWorkSection() {
   const items = [
     {
@@ -19,15 +31,16 @@ export default function FormatWorkSection() {
   ];
 
   return (
-    <section className="bg-[#f5f1ea] py-20 sm:py-24">
+    <main className="bg-[#f5f1ea]">
+    <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
             Формат работы
           </p>
-          <h2 className="mt-3 text-3xl font-light tracking-tight text-stone-900 sm:text-4xl">
+          <h1 className="mt-3 text-3xl font-light tracking-tight text-stone-900 sm:text-4xl">
             Спокойная и понятная организация терапии
-          </h2>
+          </h1>
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -70,7 +83,29 @@ export default function FormatWorkSection() {
             </div>
           </div>
         </div>
+        <div className="mt-10 rounded-2xl border border-stone-200 bg-[#EDE4D7] p-6 sm:p-8">
+          <p className="max-w-xl text-base leading-7 text-stone-700">
+            Сеттинг — это не формальность, а часть самой терапевтической
+            работы. Постоянство времени, места и рамки встречи помогает
+            создавать пространство, в котором возможно доверие и осмысление.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <Link
+              href="/contacts"
+              className="inline-flex items-center justify-center rounded-full bg-[#26231F] px-6 py-3 text-sm font-medium text-[#F7F3EC] transition hover:bg-[#3a3530]"
+            >
+              Написать мне
+            </Link>
+            <Link
+              href="/faq"
+              className="inline-flex items-center justify-center rounded-full border border-stone-300 px-6 py-3 text-sm font-medium text-stone-700 transition hover:bg-stone-100"
+            >
+              Частые вопросы
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
+    </main>
   );
 }
