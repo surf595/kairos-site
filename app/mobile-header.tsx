@@ -64,7 +64,7 @@ export default function MobileHeader() {
                   onClick={() => setOpen(false)}
                   className="mt-2 inline-flex h-11 items-center justify-center rounded-full bg-[#171614] px-5 text-sm font-medium text-[#F7F3EC] transition hover:bg-[#27231F]"
                 >
-                  Записаться
+                  Написать мне
                 </Link>
               </nav>
             </div>
