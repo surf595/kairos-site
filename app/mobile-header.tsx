@@ -5,10 +5,9 @@ import { useState } from "react";
 
 const navItems = [
   { href: "/", label: "Главная" },
-  { href: "/about", label: "Обо мне" },
   { href: "/services", label: "С чем я работаю" },
-  { href: "/format", label: "Формат работы" },
   { href: "/faq", label: "FAQ" },
+  { href: "/about", label: "Обо мне" },
   { href: "/contacts", label: "Контакты" },
 ];
 
