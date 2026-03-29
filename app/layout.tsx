@@ -168,13 +168,13 @@ export default function RootLayout({
                     href="/privacy"
                     className="transition hover:text-[#312D28]"
                   >
-                    Privacy Policy
+                    Политика конфиденциальности
                   </Link>
                   <Link
                     href="/terms"
                     className="transition hover:text-[#312D28]"
                   >
-                    Terms & Conditions
+                    Условия использования
                   </Link>
                 </div>
               </div>

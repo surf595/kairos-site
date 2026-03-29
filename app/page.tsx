@@ -12,11 +12,13 @@ const features = [
 export default function HomePage() {
   return (
     <main className="home-premium bg-[#F3EEE6] text-[#26231F]">
+      {/* ── Hero ── */}
       <section className="home-hero relative overflow-hidden border-b border-black/10">
         <div className="hero-light absolute inset-0" />
         <div className="hero-noise absolute inset-0" />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-10 md:px-10 md:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:px-12 lg:py-24"></div>.
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-10 md:px-10 md:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:px-12 lg:py-24">
+          {/* Left column */}
           <div className="fade-in-up text-left">
             <p className="mb-5 text-[11px] uppercase tracking-[0.28em] text-[#7A7268] md:text-xs md:tracking-[0.34em]">
               Kairos Therapy OÜ • частная практика
@@ -47,7 +49,7 @@ export default function HomePage() {
                 href="/contacts"
                 className="hp-btn hp-btn-primary inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-medium"
               >
-                Записаться на консультацию
+                Написать и узнать подробнее
               </Link>
 
               <Link
@@ -61,7 +63,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               {[
                 "Индивидуальная практика",
-                "50 минут",
+                "50 минут · 60 €",
                 "Очно в Таллине",
                 "Онлайн",
                 "Русский язык",
@@ -76,6 +78,7 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Right column */}
           <div className="fade-in-up [animation-delay:160ms]">
             <div className="relative mx-auto w-full max-w-[560px]">
               <div className="absolute -left-10 top-10 hidden h-40 w-40 rounded-full bg-[#E8DED0] blur-3xl md:block" />
@@ -86,11 +89,7 @@ export default function HomePage() {
                   <div className="relative flex min-h-[420px] flex-col justify-between overflow-hidden rounded-[24px] border border-[#E2D8CC] bg-[linear-gradient(160deg,rgba(255,255,255,0.62),rgba(238,229,217,0.72))] p-5 sm:min-h-[500px] sm:p-6 md:min-h-[520px] md:p-7">
                     <div className="hero-ambient-light absolute inset-0" />
 
-
                     <div className="hero-orbit-system absolute inset-x-0 top-8 z-0 flex justify-center sm:top-12 md:top-[72px]">
-
-                    <div className="hero-orbit-system absolute inset-x-0 top-[72px] z-0 flex justify-center">
-
                       <div className="orbit orbit-outer orbit-parallax-slow" />
                       <div className="orbit orbit-middle orbit-parallax-fast" />
                       <div className="orbit orbit-inner orbit-parallax-mid" />
@@ -101,7 +100,6 @@ export default function HomePage() {
                       <div className="orbit-dust orbit-dust-one" />
                       <div className="orbit-dust orbit-dust-two" />
                     </div>
-
 
                     <div className="relative z-10 flex items-start justify-between">
                       <span className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
@@ -141,71 +139,18 @@ export default function HomePage() {
                           strokeWidth="1"
                           fill="none"
                         />
-
                         <path
                           d="M40 150 Q150 40 260 150"
                           stroke="#CBBEAD"
                           strokeWidth="1"
                           fill="none"
                         />
-
                         <path
                           d="M60 200 Q150 90 240 200"
                           stroke="#D6CCBF"
                           strokeWidth="1"
                           fill="none"
                         />
-                    <div className="relative flex h-full items-center justify-center">
-                      <div className="flex h-full items-center justify-center">
-                        <svg
-                          viewBox="0 0 300 300"
-                          className="w-[260px]"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <circle
-                            cx="150"
-                            cy="150"
-                            r="110"
-                            stroke="#CFC5B7"
-                            strokeWidth="1"
-                            fill="none"
-                          />
-                          <circle
-                            cx="150"
-                            cy="150"
-                            r="80"
-                            stroke="#DAD1C5"
-                            strokeWidth="1"
-                            fill="none"
-                          />
-                          <circle
-                            cx="150"
-                            cy="150"
-                            r="50"
-                            stroke="#E6DED3"
-                            strokeWidth="1"
-                            fill="none"
-                          />
-
-                          <path
-                            d="M40 150 Q150 40 260 150"
-                            stroke="#CBBEAD"
-                            strokeWidth="1"
-                            fill="none"
-                          />
-
-                          <path
-                            d="M60 200 Q150 90 240 200"
-                            stroke="#D6CCBF"
-                            strokeWidth="1"
-                            fill="none"
-                          />
-
-                          <circle cx="150" cy="150" r="6" fill="#9C7C5D" />
-                        </svg>
-                      </div>
-                    </div>
-
                         <circle cx="150" cy="150" r="6" fill="#9C7C5D" />
                       </svg>
                     </div>
@@ -246,6 +191,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── О практике ── */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
@@ -278,6 +224,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Кабинет ── */}
       <section className="border-y border-black/10 bg-[#F6F1EA]">
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
@@ -319,49 +266,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-black/10 bg-[#EFE7DC]">
-        <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-[#8A7E70]">
-                Пространство
-              </p>
-
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                Кабинет в Таллине
-              </h2>
-
-              <p className="mt-6 max-w-xl text-lg leading-8 text-[#5A534A]">
-                Очная работа проходит в спокойном пространстве, где можно
-                говорить без спешки и внешнего давления. В терапии важна не
-                только беседа, но и сама рамка встречи — место, время и
-                устойчивость пространства.
-              </p>
-
-              <p className="mt-4 max-w-xl text-lg leading-8 text-[#5A534A]">
-                Иногда именно возможность просто быть услышанным в таком месте
-                уже становится началом внутреннего движения.
-              </p>
-            </div>
-
-            <div className="overflow-hidden rounded-[34px] border border-[#D8CCBE] bg-[#F8F4EE] shadow-[0_24px_60px_rgba(92,72,46,0.08)]">
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src="/images/cabin/cabin.jpeg"
-                  alt="Кабинет психотерапии Kairos Therapy в Таллине"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* ── Темы работы ── */}
       <TopicsPreview />
 
+      {/* ── Формат работы ── */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
@@ -376,6 +284,12 @@ export default function HomePage() {
               Постоянство времени, места и рамки помогает постепенно создавать
               пространство, в котором может возникать доверие и осмысление.
             </p>
+            <Link
+              href="/format"
+              className="mt-6 inline-flex items-center text-sm text-[#7A6E62] underline underline-offset-4 hover:text-[#26231F]"
+            >
+              Подробнее о формате работы →
+            </Link>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -396,6 +310,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Первая встреча ── */}
       <section className="border-t border-black/10 bg-[#EDE4D7]">
         <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
           <div className="glass-panel overflow-hidden rounded-[36px] border border-[#D4C7B7] p-8 md:p-12">
@@ -405,17 +320,14 @@ export default function HomePage() {
                   Первая встреча
                 </p>
                 <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                  Можно прийти и без “правильного запроса”
+                  Можно прийти и без "правильного запроса"
                 </h2>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-[#5A534A]">
                   Нередко человек приходит с ощущением, что ему трудно
                   объяснить, что именно происходит. Это нормально. Первая
                   встреча нужна не для того, чтобы сразу всё сформулировать
                   идеально, а чтобы начать совместно разбираться в происходящем.
-                  Нередко человек приходит с ощущением, что ему трудно объяснить,
-                  что именно происходит. Это нормально. Первая встреча нужна не
-                  для того, чтобы сразу всё сформулировать идеально, а чтобы
-                  начать совместно разбираться в происходящем.
+                  Это не обязательство — просто разговор.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
