@@ -102,7 +102,7 @@ const processFaq = [
   {
     question: "Что если я хочу прекратить терапию?",
     answer:
-      "Это можно и важно обсуждать. Желание завершить работу — тоже часть процесса. Обычно полезно не исчезать abruptly, а посвятить этому одну или несколько встреч, чтобы осмыслить завершение.",
+      "Это можно и важно обсуждать. Желание завершить работу — тоже часть процесса. Обычно полезно не исчезать резко, а посвятить этому одну или несколько встреч, чтобы осмыслить завершение.",
   },
 ]
 
@@ -243,9 +243,22 @@ export default function FAQPage() {
             Не нашли ответ на свой вопрос?
           </h2>
           <p className="mt-3 max-w-2xl text-[17px] leading-8 text-neutral-700">
-            Вы можете связаться со мной через страницу контактов и задать свой
-            вопрос напрямую.
+            Вы можете написать мне напрямую — я отвечу в течение 24 часов.
           </p>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <a
+              href="/contacts"
+              className="inline-flex items-center justify-center rounded-full bg-[#26231F] px-6 py-3 text-sm font-medium text-[#F7F3EC] transition hover:bg-[#3a3530]"
+            >
+              Написать мне
+            </a>
+            <a
+              href="/about"
+              className="inline-flex items-center justify-center rounded-full border border-black/15 px-6 py-3 text-sm font-medium text-neutral-700 transition hover:bg-black/5"
+            >
+              Об авторе практики
+            </a>
+          </div>
         </section>
       </section>
     </main>

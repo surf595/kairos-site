@@ -59,7 +59,7 @@ export default function AboutPage() {
             </p>
 
             <h1 className="max-w-2xl font-serif text-5xl leading-[0.95] tracking-[-0.03em] md:text-6xl">
-              Психотерапия как пространство для понимания себя
+              Виктор — психолог и психотерапевт в Таллине
             </h1>
 
             <div className="mt-8 max-w-2xl space-y-6 text-lg leading-8 text-[var(--text-soft)] md:text-[1.34rem] md:leading-9">
@@ -290,7 +290,7 @@ export default function AboutPage() {
 
           <div className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
             <Image
-              src="/images/office.jpg"
+              src="/images/cabin/cabin.jpeg"
               alt="Кабинет Kairos Therapy в Таллине"
               width={1600}
               height={1000}
@@ -301,31 +301,31 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-8 md:pb-28">
-        <div className="overflow-hidden rounded-[2rem] bg-[#2c312f] px-8 py-10 text-white md:px-12 md:py-14">
+        <div className="overflow-hidden rounded-[2rem] border border-[#D4C7B7] bg-[#EDE4D7] px-8 py-10 md:px-12 md:py-14">
           <div className="max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-[0.28em] text-white/60">
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#8A7E70]">
               Первый шаг
             </p>
-            <h2 className="mt-4 font-serif text-3xl leading-tight tracking-[-0.02em] md:text-5xl">
-              Запись на консультацию
+            <h2 className="mt-4 font-serif text-3xl leading-tight tracking-[-0.02em] text-[#1E1C19] md:text-5xl">
+              Написать и узнать подробнее
             </h2>
-            <p className="mt-6 text-lg leading-8 text-white/80">
+            <p className="mt-6 text-lg leading-8 text-[#5A534A]">
               Если вы чувствуете, что пришло время разобраться в том, что
-              происходит в вашей жизни, вы можете связаться со мной для записи
-              на первую встречу.
+              происходит в вашей жизни, напишите мне. Первая встреча —
+              это просто разговор, не обязательство. Отвечу в течение 24 часов.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/contacts"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-[#2c312f] transition hover:scale-[1.02]"
+                className="inline-flex items-center justify-center rounded-full bg-[#26231F] px-6 py-3 text-sm font-medium text-[#F7F3EC] transition hover:bg-[#3a3530]"
               >
-                Связаться
+                Написать мне
               </Link>
 
               <Link
                 href="/faq"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white/90 transition hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-full border border-[#C8BAA8] px-6 py-3 text-sm font-medium text-[#5A534A] transition hover:bg-[#E5DBCD]"
               >
                 Вопросы и ответы
               </Link>

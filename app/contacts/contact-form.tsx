@@ -103,6 +103,7 @@ export default function ContactForm() {
           minLength={2}
           maxLength={100}
           autoComplete="name"
+          placeholder="Как вас зовут"
           className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
         />
       </div>
@@ -118,6 +119,7 @@ export default function ContactForm() {
           required
           maxLength={150}
           autoComplete="email"
+          placeholder="example@mail.com"
           className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
         />
       </div>
@@ -133,6 +135,7 @@ export default function ContactForm() {
           required
           minLength={10}
           maxLength={3000}
+          placeholder="Можно написать пару слов о том, что происходит — или просто спросить о встрече. Не нужно формулировать запрос идеально."
           className="w-full rounded-xl border border-[#2f3331]/20 bg-white px-4 py-3 outline-none transition focus:border-[#2f3331]/40"
         />
       </div>
